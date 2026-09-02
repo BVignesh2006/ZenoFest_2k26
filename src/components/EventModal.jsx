@@ -1,5 +1,4 @@
-import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { useState, useEffect, useRef } from 'react'
 import {
   X,
   Calendar,
@@ -16,9 +15,32 @@ import {
   FileText,
   UserCheck
 } from 'lucide-react'
+import { motion, AnimatePresence } from 'framer-motion'
 
 export default function EventModal({ event, onClose, onOpenRegister }) {
   const [activeTab, setActiveTab] = useState('rules')
+  const backdropRef = useRef(null)
+  const containerRef = useRef(null)
+  const bodyScrollRef = useRef(null)
+
+  useEffect(() => {
+    setActiveTab('rules')
+  }, [event?.id])
+
+  useEffect(() => {
+    if (backdropRef.current) backdropRef.current.scrollTop = 0
+    if (containerRef.current) containerRef.current.scrollTop = 0
+    if (bodyScrollRef.current) bodyScrollRef.current.scrollTop = 0
+  }, [event?.id, activeTab])
+
+  useEffect(() => {
+    if (event) {
+      document.body.style.overflow = 'hidden'
+    }
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [event])
 
   if (!event) return null
 
@@ -26,10 +48,11 @@ export default function EventModal({ event, onClose, onOpenRegister }) {
 
   return (
     <AnimatePresence>
-      <div className="event-modal-backdrop" onClick={onClose}>
+      <div className="event-modal-backdrop" ref={backdropRef} onClick={onClose}>
         {/* Backdrop blur overlay */}
         <motion.div
           className="event-modal-container"
+          ref={containerRef}
           onClick={(e) => e.stopPropagation()}
           initial={{ opacity: 0, scale: 0.92, y: 30 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -119,7 +142,7 @@ export default function EventModal({ event, onClose, onOpenRegister }) {
           </div>
 
           {/* Modal Scrollable Body */}
-          <div className="modal-body-scroll">
+          <div className="modal-body-scroll" ref={bodyScrollRef}>
             {/* ── TAB 1: RULES ── */}
             {activeTab === 'rules' && (
               <motion.div
@@ -305,20 +328,7 @@ export default function EventModal({ event, onClose, onOpenRegister }) {
               <span className="footer-prize-value">{event.prizePool}</span>
             </div>
 
-            <div className="modal-footer-actions">
-              <button className="btn-secondary" onClick={onClose}>
-                Close
-              </button>
-              <button
-                className="btn-primary-glow"
-                onClick={() => {
-                  onClose()
-                  onOpenRegister(event)
-                }}
-              >
-                Register For Event
-              </button>
-            </div>
+
           </div>
         </motion.div>
       </div>

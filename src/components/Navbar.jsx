@@ -12,7 +12,7 @@ export default function Navbar() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 40)
 
-      const sections = ['about', 'events', 'gallery']
+      const sections = ['about', 'events', 'timeline']
       const scrollPosition = window.scrollY + 250
 
       for (const sectionId of sections) {
@@ -48,18 +48,18 @@ export default function Navbar() {
           <div className="nav-brand" onClick={() => scrollToSection('about')}>
             <div className="brand-hex-icon">
               <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 2L21.5 7.5V16.5L12 22L2.5 16.5V7.5L12 2Z" stroke="currentColor" strokeWidth="2" />
-                <circle cx="12" cy="12" r="3.5" fill="currentColor" />
+                <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
+                <circle cx="12" cy="12" r="3" fill="currentColor" />
               </svg>
             </div>
-            <div className="brand-text-wrap">
-              <span className="brand-title">ZENOFEST<span className="brand-year">'26</span></span>
-              <span className="brand-tag">NATIONAL EXPO</span>
+            <div className="brand-text">
+              <span className="brand-title">ZenoFest</span>
+              <span className="brand-year">2K26</span>
             </div>
           </div>
 
-          {/* Desktop Nav Links */}
-          <nav className="desktop-nav">
+          {/* Desktop Links */}
+          <nav className="nav-desktop-links">
             <button
               className={`nav-link-btn ${activeSection === 'about' ? 'active' : ''}`}
               onClick={() => scrollToSection('about')}
@@ -75,17 +75,16 @@ export default function Navbar() {
             >
               <span className="nav-link-num">02</span>
               <span>Events</span>
-              <span className="nav-event-count">6</span>
               {activeSection === 'events' && <motion.div layoutId="nav-pill" className="nav-active-pill" />}
             </button>
 
             <button
-              className={`nav-link-btn ${activeSection === 'gallery' ? 'active' : ''}`}
-              onClick={() => scrollToSection('gallery')}
+              className={`nav-link-btn ${activeSection === 'timeline' ? 'active' : ''}`}
+              onClick={() => scrollToSection('timeline')}
             >
               <span className="nav-link-num">03</span>
-              <span>Gallery</span>
-              {activeSection === 'gallery' && <motion.div layoutId="nav-pill" className="nav-active-pill" />}
+              <span>Timeline</span>
+              {activeSection === 'timeline' && <motion.div layoutId="nav-pill" className="nav-active-pill" />}
             </button>
           </nav>
 
@@ -140,11 +139,11 @@ export default function Navbar() {
               </button>
 
               <button
-                className={`mobile-nav-link ${activeSection === 'gallery' ? 'active' : ''}`}
-                onClick={() => scrollToSection('gallery')}
+                className={`mobile-nav-link ${activeSection === 'timeline' ? 'active' : ''}`}
+                onClick={() => scrollToSection('timeline')}
               >
                 <span className="m-num">03</span>
-                <span>HUD Gallery Scanner</span>
+                <span>Fest Timeline & Schedule</span>
                 <ChevronRight size={16} />
               </button>
 

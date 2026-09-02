@@ -179,10 +179,6 @@ export default function Timeline() {
               <div className="timeline-title-group">
                 <h2 className="timeline-main-title">TIMELINE</h2>
               </div>
-
-              <div className="header-right">
-                <button className="menu-btn">MENU +</button>
-              </div>
             </div>
 
             {/* Carousel Viewport Window */}
@@ -190,7 +186,7 @@ export default function Timeline() {
               <motion.div
                 className="timeline-track-stage"
                 animate={{ x: stageTranslateX }}
-                transition={{ type: 'spring', stiffness: 180, damping: 24 }}
+                transition={{ type: 'spring', stiffness: 70, damping: 22, mass: 1 }}
               >
                 {/* Top Row Platform Cards */}
                 <div className="cards-row top-row">
@@ -284,7 +280,7 @@ export default function Timeline() {
                   <motion.div
                     className="track-progress-fill"
                     animate={{ width: `${stationCenterPx}px` }}
-                    transition={{ type: 'spring', stiffness: 180, damping: 24 }}
+                    transition={{ type: 'spring', stiffness: 70, damping: 22, mass: 1 }}
                     style={{ backgroundColor: currentStation.color }}
                   />
 
@@ -292,7 +288,7 @@ export default function Timeline() {
                   <motion.div
                     className="train-car-wrapper"
                     animate={{ left: `${stationCenterPx}px` }}
-                    transition={{ type: 'spring', stiffness: 180, damping: 24 }}
+                    transition={{ type: 'spring', stiffness: 70, damping: 22, mass: 1 }}
                   >
                     <div className="train-smoke-particle" />
                     <div className="train-icon-box">

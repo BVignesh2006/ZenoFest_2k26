@@ -1,0 +1,22 @@
+Free Fire Rules
+Round:1
+🎮 Mode: Battle Royale – Solo 
+👤 Each player plays individually. 
+🚫 Teaming with other players is strictly prohibited. 
+❌ Hacks, cheats, scripts, config files, or third-party tools are not allowed. 
+🗣️ Abusive or toxic behavior may result in disqualification.
+🐛 Exploiting bugs or glitches will result in disqualification. 
+⏰ Players must join the custom room before the announced start time. 
+📱 Device, internet, battery, or connection issues are the player's responsibility. 
+⚔️ Kill farming, kill trading, or intentionally helping another player is prohibited.
+📸Players may be required to provide screenshots/video proof if requested by admins
+👑 Admin/Organizer decision is final. 
+Round:2
+🎮 Mode: Clash Squad – Solo 
+❌ Hacks, cheats, scripts, config files, or third-party tools are not allowed.
+⚠️ Cheating or rule violations can result in immediate disqualification.
+🐛 Bug/glitch abuse will result in disqualification.
+📱 Network, device, battery, or disconnect issues are the player's responsibility.
+📸 Admins may request screenshots/video proof if there is a dispute.
+🏆 Winner will be decided by the CS match result.
+💰 Prize distribution will happen after result verification.

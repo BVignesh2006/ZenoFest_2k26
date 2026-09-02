@@ -9,8 +9,8 @@ export const eventsData = [
     shortDesc: 'A national-level innovation showcase where visionary students present functional prototypes across AI/ML, IoT, Web3, Robotics, and Embedded Systems before industry experts.',
     coverImage: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=800&auto=format&fit=crop&q=80',
     accentColor: '#06b6d4',
-    teamSize: '1 – 4 Members',
-    date: '08 OCT 2026 (Day 1)',
+    teamSize: '2 – 3 Members',
+    date: '25.09.2026',
     time: '10:00 AM – 01:30 PM',
     venue: 'IT Innovation Center & Project Labs',
     hasCashPrize: true,
@@ -18,41 +18,29 @@ export const eventsData = [
     firstPrize: '₹5,000',
     secondPrize: '₹3,000',
     thirdPrize: '₹2,000',
-    overview: 'Project Expo at ZenoFest 2K26 is the epicenter of technological breakthrough. This exhibition provides a premier stage for aspiring engineers and innovators to demonstrate practical working models, software applications, embedded systems, and disruptive ideas that solve pressing real-world challenges.',
+    overview: 'Each team will present their innovative project to the panel of evaluators. The presentation should clearly highlight the problem addressed, the innovation behind the solution, and how the prototype/model works. Teams should focus on clarity, teamwork, and showcasing the innovation effectively within the time frame.',
     rounds: [
       {
         roundNumber: '01',
-        title: 'Prototype Verification & Stall Setup',
-        time: '10:00 AM – 10:45 AM',
-        desc: 'Teams set up their physical booths, boot up software instances, verify hardware connections, and submit their one-page technical abstract to the judging desk.'
-      },
-      {
-        roundNumber: '02',
-        title: 'Jury Evaluation & Live Demonstration',
-        time: '10:45 AM – 12:45 PM',
-        desc: 'Each team presents an 8-minute deep-dive pitch followed by 4 minutes of intense Q&A with the industry panel. Demonstrating the working live prototype is mandatory.'
-      },
-      {
-        roundNumber: '03',
-        title: 'Grand Finale Showcase & Winner Reveal',
-        time: '01:00 PM – 01:30 PM',
-        desc: 'Top 5 shortlisted finalists present a 3-minute lightning elevator pitch before the grand audience in the auditorium.'
+        title: 'Project Presentation & Q&A',
+        time: '10:00 AM – 01:30 PM',
+        desc: 'Each team has 2 to 4 minutes to present their project. After the presentation, evaluators will ask questions for 2 to 3 minutes.'
       }
     ],
     rules: [
-      'Every team can consist of minimum 1 to maximum 4 participants.',
-      'Working live prototype / simulation demo is strictly mandatory during evaluation.',
-      'Teams must bring their own laptops, microcontrollers, sensors, cables, and development boards. Standard 230V power sockets and high-speed Wi-Fi will be provided.',
-      'Projects must be original creations by student team members. Plagiarism or commercial turn-key solutions will lead to immediate disqualification.',
-      'Submissions can span domains including AI/ML, IoT, Embedded Systems, Cloud/Web3, AR/VR, Assistive Tech, and Green Energy.',
-      'Judges will evaluate on 4 key pillars: Innovation & Novelty (25%), Technical Complexity (25%), Real-world Feasibility (25%), and Demonstration Clarity (25%).',
-      'The decision of the jury committee is final and binding on all participating teams.'
+      'Team Size: Each team must have between 2 to 3 members.',
+      'Presentation Time: Each team has 2 to 4 minutes to present their project. Strictly no extension beyond the allotted time.',
+      'Prototype/Model: It is highly recommended to showcase a working prototype or model during the presentation.',
+      'GitHub Repository: Each team must create a separate repository for their project under the Zenofest 2k26 GitHub Organization and submit the repository link.',
+      'Project Documentation: Each team must bring proper documentation related to their project.',
+      'No External Help: Use only your own knowledge and project work; no outside assistance is allowed during the presentation.',
+      'Winner Calculation: Evaluation will be based on Innovation, Teamwork, and Clarity of presentation. The project prototype/model, GitHub repository, and project documentation will also be considered.'
     ],
     requirements: [
       'College ID card of all team members',
-      'Working prototype / hardware kit / laptop with local codebase',
-      'Extension cord / converter (optional but advised)',
-      '1-Page printed project summary sheet'
+      'Working prototype / model',
+      'GitHub repository link under the Zenofest 2k26 Organization',
+      'Proper documentation related to the project'
     ],
     coordinators: [
       { name: 'Arun Kumar M', role: 'Student Coordinator', phone: '+91 98765 43210', email: 'arunkumar.it@zenofest.in' },
@@ -69,8 +57,8 @@ export const eventsData = [
     shortDesc: 'A fast-paced interactive design challenge where designers tackle a live real-world problem statement to architect high-fidelity Figma prototypes and design systems.',
     coverImage: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&auto=format&fit=crop&q=80',
     accentColor: '#8b5cf6',
-    teamSize: '1 – 2 Members',
-    date: '25 SEP 2026',
+    teamSize: '2 – 3 Members',
+    date: '25.09.2026',
     time: '02:00 PM – 04:30 PM',
     venue: 'CAD Design Studio & Multimedia Lab',
     hasCashPrize: false,
@@ -78,40 +66,52 @@ export const eventsData = [
     firstPrize: 'Winner Trophy + Certificate of Merit',
     secondPrize: 'Runner Trophy + Certificate of Merit',
     thirdPrize: 'Certificate of Appreciation',
-    overview: 'UI/UX Designathon is a crucible for digital product architects and visual storytellers. Participants will be handed a surprise problem statement at the start of the clock and must conduct user journey mapping, wireframing, and build interactive clickable prototypes that elevate user experience.',
+    overview: 'A 2-hour UI/UX design challenge where participants are given a problem statement on the spot. Teams will go through ideation, wireframing, UI design, and prototyping to present a final solution.',
     rounds: [
       {
         roundNumber: '01',
-        title: 'Brief Reveal & User Journey Mapping',
-        time: '02:00 PM – 02:30 PM',
-        desc: 'Unsealing the core problem prompt (e.g. AI-assisted healthcare workflow, next-gen EV dashboard, or campus collaborative super-app). Teams formulate user personas and wireframes.'
+        title: 'Problem Understanding & Ideation',
+        time: '20 Mins',
+        desc: 'Understand the problem statement, brainstorm solutions, and conduct necessary research.'
       },
       {
         roundNumber: '02',
-        title: 'High-Fidelity Sprint & Prototyping',
-        time: '02:30 PM – 04:00 PM',
-        desc: '90 minutes of focused digital craftsmanship in Figma/Adobe XD creating components, tokens, interactions, and responsive mobile/desktop viewports.'
+        title: 'Wireframing / User Flow',
+        time: '25 Mins',
+        desc: 'Create wireframes and define the user flow.'
       },
       {
         roundNumber: '03',
-        title: 'Interactive Walkthrough & Critiques',
-        time: '04:00 PM – 04:30 PM',
-        desc: 'Teams present a live clickable prototype walkthrough to UI/UX lead designers, articulating their UX rationale and design token hierarchy.'
+        title: 'UI Design',
+        time: '45 Mins',
+        desc: 'Design the high-fidelity UI screens in Figma.'
+      },
+      {
+        roundNumber: '04',
+        title: 'Prototyping',
+        time: '20 Mins',
+        desc: 'Build interactive clickable prototypes.'
+      },
+      {
+        roundNumber: '05',
+        title: 'Final Review & Presentation Prep',
+        time: '10 Mins',
+        desc: 'Prepare for presentation and finalize the prototype.'
       }
     ],
     rules: [
-      'Teams can participate individually or in pairs (max 2 members).',
-      'Supported tools: Figma (preferred), Adobe XD, Penpot, or Sketch.',
-      'The exact design problem statement will be disclosed on-spot when the countdown begins.',
-      'All UI assets, screens, and interaction flows must be created during the 2.5-hour event duration. Using pre-fabricated community templates is strictly forbidden.',
-      'Final submission must include: (1) Viewable Figma link with prototype permissions, (2) User persona slide, (3) Color palette & typography styleguide.',
-      'Scoring Rubric: Ergonomics & UX Usability (35%), Visual Aesthetics & Typography (30%), Innovation & Problem Solving (20%), Design System Cohesion (15%).',
-      'Plagiarism checks will be conducted on final component libraries.'
+      'Problem statement will be announced at the start. No prior hints.',
+      'The design must directly address the problem statement. State assumptions clearly during the presentation.',
+      'AI tools are allowed for research and copy, but NOT for auto-generating UI designs or copying templates.',
+      'Only Figma is allowed for this event.',
+      'Final submission must be made before the deadline.',
+      'Judging based on UX, UI, creativity, innovation, user flow, and presentation.',
+      'Judges decision is final and binding.'
     ],
     requirements: [
       'Laptop with Figma desktop or browser logged in',
       'Stable internet connection (Wi-Fi provided)',
-      'Figma community access'
+      'College ID card of all team members'
     ],
     coordinators: [
       { name: 'Dharshini R', role: 'Student Coordinator', phone: '+91 97890 12345', email: 'dharshini.des@zenofest.in' },
@@ -128,8 +128,8 @@ export const eventsData = [
     shortDesc: 'A multi-tier algorithmic code quest where programmers follow cyber breadcrumbs, fix obfuscated codebases, and crack logic puzzles to unearth the master key.',
     coverImage: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&auto=format&fit=crop&q=80',
     accentColor: '#3b82f6',
-    teamSize: '1 – 2 Members (Solo / Duo)',
-    date: '09 OCT 2026 (Day 2)',
+    teamSize: '2 – 3 Members',
+    date: '25.09.2026',
     time: '10:00 AM – 12:30 PM',
     venue: 'Advanced Coding Lab 2 & Server Room',
     hasCashPrize: false,
@@ -137,39 +137,37 @@ export const eventsData = [
     firstPrize: 'Champion Trophy + Certificate of Merit',
     secondPrize: 'Runner Trophy + Certificate of Merit',
     thirdPrize: 'Certificate of Appreciation',
-    overview: 'Logic Hunt is no ordinary hackathon—it is a cyberpunk intelligence labyrinth. Teams will be tested on mathematical logic, reverse engineering, output prediction, and algorithm optimization in a battle against the ticking clock.',
+    overview: 'Logical Hunt is a 3-round technical event testing your problem-solving skills across basic logical questions, debugging, and code logic challenges. Teams will be evaluated based on the correctness of their solutions and the time taken.',
     rounds: [
       {
         roundNumber: '01',
-        title: 'Cryptic Code Decryption',
-        time: '10:00 AM – 10:40 AM',
-        desc: 'Solve 15 rapid-fire code puzzles, output riddles, and hexadecimal/ASCII encoded breadcrumbs to unlock the level-2 terminal.'
+        title: 'Basic Logical Questions',
+        time: '15 Mins',
+        desc: 'Participants must answer 15 basic logic-related MCQs within 15 minutes. All questions are mandatory. Each question carries 1 mark with no negative marking. Points are calculated based on correct answers and submission time. Top teams will be shortlisted for Round 2.'
       },
       {
         roundNumber: '02',
-        title: 'Bug Hunting in Obfuscated Source',
-        time: '10:40 AM – 11:30 AM',
-        desc: 'Inspect real-world buggy programs in C++/Python/Java, find memory leaks, recursion bottlenecks, and edge case bugs to patch the software vault.'
+        title: 'Debugging',
+        time: '20 Mins',
+        desc: 'Teams will be provided with exactly 5 code snippets containing syntax, runtime, or logical errors. Participants have 20 minutes to identify the errors and write the corrected code/output. Each correct solution carries 5 marks with no negative marking. Top teams advance to Round 3.'
       },
       {
         roundNumber: '03',
-        title: 'The Algorithmic Maze & Master Key',
-        time: '11:30 AM – 12:30 PM',
-        desc: 'Write optimal algorithms for dynamic programming, graph traversals, and pathfinding to extract the final cryptographic token.'
+        title: 'Code Logic Challenge',
+        time: 'TBA',
+        desc: 'A pure coding challenge where teams are given 2 problem statements. Participants must write optimized code in any programming language that satisfies all mentioned constraints within the time limit. Final winners are determined by combined scores and time.'
       }
     ],
     rules: [
-      'Teams of 1 or 2 participants are allowed.',
-      'Permitted Programming Languages: C, C++, Python 3, Java, JavaScript (Node.js).',
-      'The competition is strictly proctored on a customized offline terminal environment.',
-      'Access to AI assistance tools (ChatGPT, Copilot, Gemini, Claude) or external code repos is strictly banned and monitored via screen logs.',
-      'Checkpoints must be unlocked in sequential order; each milestone grants access tokens to the next challenge.',
-      'Tie breaker: In case of equal scores, the team with fewer wrong attempts and earlier completion time takes priority.',
-      'Unsportsmanlike conduct or network tampering will lead to immediate ban.'
+      'Each team must contain 2 to 3 members.',
+      'Participants can use any programming language for the coding challenges.',
+      'Time constraints are strictly followed in all rounds.',
+      'Scoring: Winners will be determined based on a combination of secured points for correctness and time of submission.',
+      'Judges decision is final.'
     ],
     requirements: [
-      'Laptop with pre-configured IDE/compiler (VS Code / PyCharm / GCC)',
-      'College Identity Card'
+      'Laptop with preferred IDE/compiler installed',
+      'College Identity Card of all team members'
     ],
     coordinators: [
       { name: 'Karthik M', role: 'Student Lead', phone: '+91 99440 55667', email: 'karthik.algo@zenofest.in' },
@@ -188,8 +186,8 @@ export const eventsData = [
     shortDesc: 'A captivating 20-questions mystery showdown where players unmask iconic tech legends, pop culture titans, sci-fi movies, and quirky personas against the clock.',
     coverImage: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?w=800&auto=format&fit=crop&q=80',
     accentColor: '#ec4899',
-    teamSize: '2 Members (Duo)',
-    date: '08 OCT 2026 (Day 1)',
+    teamSize: '2 – 3 Members',
+    date: '25.09.2026',
     time: '11:30 AM – 01:00 PM',
     venue: 'Open Amphitheatre / Seminar Hall 1',
     hasCashPrize: false,
@@ -197,38 +195,37 @@ export const eventsData = [
     firstPrize: 'Winner Trophy + Certificate of Merit + Hamper',
     secondPrize: 'Runner Trophy + Certificate of Merit',
     thirdPrize: 'Certificate of Appreciation',
-    overview: 'Who Am I? brings high-octane entertainment and intense detective chemistry to the festival stage. One participant receives an identity pinned to their head or screen, while their partner holds the clues. Can you deduce your mystery persona using only Yes/No questions and taboo-style clues before the sand runs out?',
+    overview: 'A 3-round non-technical event testing your pop-culture knowledge, quick thinking, and deduction skills. Identify logos, guess personas using emojis, and connect progressive hints before the time runs out!',
     rounds: [
       {
         roundNumber: '01',
-        title: 'The Yes/No Forehead Matrix',
-        time: '11:30 AM – 12:00 PM',
-        desc: 'Player A wears a digital headband card displaying a character (e.g. Alan Turing, Tony Stark, Linus Torvalds). They ask 10 strict Yes/No questions to Player B within 90 seconds to guess who they are.'
+        title: 'Logo Hunt',
+        time: '30 sec / question',
+        desc: 'Identify the correct original logo out of 4–6 options displayed on screen. No discussion between participants is allowed. Each correct answer carries 10 points with no negative marking. Top teams advance to Round 2.'
       },
       {
         roundNumber: '02',
-        title: 'Taboo & Forbidden Words',
-        time: '12:00 PM – 12:35 PM',
-        desc: 'Player B must describe a famous technology, CEO, movie or gadget to Player A without uttering 5 forbidden buzzwords listed on the screen.'
+        title: 'Guess By Emoji',
+        time: '45 sec / question',
+        desc: 'Connect the set of emojis on screen and guess the correct persona/character. You must press the buzzer first to answer. Correct answers get +10 points, while wrong answers or false buzzers result in a -5 penalty.'
       },
       {
         roundNumber: '03',
-        title: 'Sudden Death Buzzer Faceoff',
-        time: '12:35 PM – 01:00 PM',
-        desc: 'Top 4 teams duel head-to-head with progressive voice distorted clues and silhouette reveals on the main projector.'
+        title: '3 Hints - 1 Persona',
+        time: '45 sec / question',
+        desc: 'Guess the hidden persona using up to 3 progressive clues (Hard to Easy). Teams can press the buzzer at any hint stage. Guessing at Hint 1 gets +30 points, Hint 2 gets +20 points, and Hint 3 gets +10 points. A wrong guess incurs a -10 point penalty.'
       }
     ],
     rules: [
-      'Teams must strictly consist of exactly 2 participants.',
-      'In Round 1, only queries that can be answered with "Yes", "No", or "Irrelevant" are permitted. Descriptive questions (e.g., "What color is my hair?") result in a 5-second time penalty.',
-      'In Round 2, saying any taboo word, rhymes, or miming triggers a buzzer penalty.',
-      'Mobile phones and smart watches must remain powered off in bags throughout the session.',
-      'The time taken for correct guesses will be recorded down to hundredths of a second.',
-      'The judges’ adjudication on allowable hints and deductions is final.'
+      'Team size must strictly be 2 to 3 members.',
+      'Usage of mobile phones, smartwatches, or internet is strictly prohibited.',
+      'Any form of cheating, external help, or audience hinting will lead to immediate disqualification.',
+      'The team with the highest total score at the end of Round 3 wins the event.',
+      'The decision of the coordinators/judges will be final and binding.'
     ],
     requirements: [
       'Valid College ID card',
-      'Presence of both teammates on stage on time'
+      'Presence of all teammates on stage on time'
     ],
     coordinators: [
       { name: 'Naveen Raj C', role: 'Student Coordinator', phone: '+91 91234 56780', email: 'naveen.raj@zenofest.in' },
@@ -245,8 +242,8 @@ export const eventsData = [
     shortDesc: 'A buzzer-driven quiz arena packed with fast-paced questions, music riffs, tech logos, viral memes, and general knowledge where hesitations cost victory.',
     coverImage: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=800&auto=format&fit=crop&q=80',
     accentColor: '#f59e0b',
-    teamSize: '1 – 2 Members',
-    date: '09 OCT 2026 (Day 2)',
+    teamSize: '2 – 3 Members',
+    date: '25.09.2026',
     time: '11:00 AM – 12:30 PM',
     venue: 'Main University Auditorium',
     hasCashPrize: false,
@@ -254,34 +251,35 @@ export const eventsData = [
     firstPrize: 'Winner Trophy + Certificate of Merit + Swag',
     secondPrize: 'Runner Trophy + Certificate of Merit',
     thirdPrize: 'Certificate of Appreciation',
-    overview: 'Rapid Fire is a battle of lightning-fast cognitive reflexes. From tech history and trending AI tools to blockbuster movies, gaming lore, and auditory brain teasers, this event separates the swift from the slow in an electric auditorium atmosphere.',
+    overview: 'Rapid Fire is a lightning-fast quiz event covering Technology, Apps, Social Media, Entertainment, and General Knowledge. Participants will battle against the clock across three intense rounds. Hesitation costs victory!',
     rounds: [
       {
         roundNumber: '01',
-        title: 'The 60-Second Hot Seat',
-        time: '11:00 AM – 11:35 AM',
-        desc: 'Each team occupies the hot seat and faces a relentless barrage of 15 rapid-fire questions within 60 seconds (+10 for correct, -5 for incorrect, pass allowed).'
+        title: 'Fun Rapid Fire',
+        time: '30 Secs',
+        desc: 'Each team is given 30 seconds to answer fun and interesting questions. Each correct answer earns 1 point. The top 4 teams advance to Round 2.'
       },
       {
         roundNumber: '02',
-        title: 'Buzzer Blitzkrieg',
-        time: '11:35 AM – 12:05 PM',
-        desc: 'Live hardware buzzers! Audio tracks, pixelated logos, scrambled names, and mind-bending trivia thrown open to all qualifying teams.'
+        title: 'Think Fast',
+        time: '45 Secs',
+        desc: 'Teams have 45 seconds to answer slightly challenging questions as quickly as possible. Each correct answer earns 2 points. The top 2 teams advance to the final round.'
       },
       {
         roundNumber: '03',
-        title: 'Sudden Death Showdown',
-        time: '12:05 PM – 12:30 PM',
-        desc: 'Direct 1v1 faceoffs with a strict 3-second answer window. First team to reach 50 points takes the championship.'
+        title: 'Final Challenge',
+        time: '60 Secs',
+        desc: 'The top 2 teams face challenging rapid-fire questions for 60 seconds. Each correct answer earns 3 points. The team with the highest score wins the event.'
       }
     ],
     rules: [
-      'Teams can consist of 1 or 2 participants.',
-      'Electronic buzzers with millisecond precision are deployed on the arena tables.',
-      'Early buzzing before the quizmaster completes reading the question will lock out the buzzer for that question.',
-      'No prompting or assistance from the audience is permitted (will result in audience removal and team penalty).',
-      'Scores and penalties will be live-streamed on the auditorium jumbo screen.',
-      'The Quizmaster\'s verdict is absolute and uncontested.'
+      'Teams must consist of 2 to 3 members.',
+      'Questions will be based on Technology, Apps, Social Media, Entertainment and General Knowledge.',
+      'No mobile phones, internet, smartwatches, or external help are allowed.',
+      'Once an answer is given, it cannot be changed.',
+      'Participants can say "Pass" if they don’t know an answer.',
+      'In case of a tie, a Tie-Breaker Round will be conducted.',
+      'The decision of the judges will be final.'
     ],
     requirements: [
       'College ID card of participants',
@@ -294,55 +292,65 @@ export const eventsData = [
     ]
   },
   {
-    id: 'surprise-event',
-    title: 'Surprise Event',
+    id: 'free-fire',
+    title: 'Free Fire',
     type: 'NON-TECHNICAL',
-    badge: 'MYSTERY ARENA',
-    tagline: 'Expect the unexpected. Wildcard challenges, physical mini-games, and pure fun.',
-    shortDesc: 'The biggest mystery showdown of ZenoFest 2K26! Locked in a secret vault until you step into the arena, this event tests spontaneous agility, creative madness, and team synergy.',
-    coverImage: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=800&auto=format&fit=crop&q=80',
-    accentColor: '#10b981',
+    badge: 'ESPORTS ARENA',
+    tagline: 'Drop in, survive, and conquer the battlefield.',
+    shortDesc: 'Compete in the ultimate Free Fire battle royale and clash squad tournament. Prove your skills and claim the Booyah!',
+    coverImage: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&auto=format&fit=crop&q=80',
+    accentColor: '#ef4444',
     teamSize: '2 – 3 Members',
-    date: '09 OCT 2026 (Day 2)',
+    date: '25.09.2026',
     time: '02:00 PM – 04:00 PM',
-    venue: 'Central Fest Courtyard & Activity Arena',
-    hasCashPrize: false,
-    prizePool: 'Mystery Trophy + Certificate of Merit + Fest Vault Gift',
-    firstPrize: 'Mystery Trophy + Certificate of Merit + Gift Box',
+    venue: 'Gaming Arena',
+    hasCashPrize: true,
+    prizePool: 'Winner Trophy + Certificate of Merit + Cash Prize',
+    firstPrize: 'Winner Trophy + Certificate of Merit',
     secondPrize: 'Runner Trophy + Certificate of Merit',
     thirdPrize: 'Certificate of Appreciation',
-    overview: 'True to its name, the Surprise Event keeps everyone on edge! No preparation, no syllabus, and no leaks. Step into our dynamic arena where teams tackle hilarious physical mini-tasks, synchronized coordination challenges, puzzle relays, and situational roleplays.',
+    overview: 'Get ready for intense action in the Free Fire Esports tournament! The event consists of two rounds: Battle Royale and Clash Squad. Prove your tactical superiority and outlast your opponents.',
     rounds: [
       {
         roundNumber: '01',
-        title: 'The Sealed Envelope Task',
-        time: '02:00 PM – 02:40 PM',
-        desc: 'Teams rip open secret task cards with quirky team relay challenges designed to test synchronization and lateral problem-solving.'
+        title: 'Battle Royale',
+        time: 'TBA',
+        desc: 'Mode: Battle Royale. Players must survive and outplay others. Teaming, kill farming, and kill trading are strictly prohibited.'
       },
       {
         roundNumber: '02',
-        title: 'The Vault Obstacle Relay',
-        time: '02:40 PM – 03:20 PM',
-        desc: 'High-energy physical mini-challenges (cup stacking physics, blindfolded guide maze, balloon balancing) against the stopwatch.'
-      },
-      {
-        roundNumber: '03',
-        title: 'The Grand Mystery Finale',
-        time: '03:20 PM – 04:00 PM',
-        desc: 'Top 3 qualifying teams face an epic spontaneous finale designed exclusively by the ZenoFest organizing committee.'
+        title: 'Clash Squad',
+        time: 'TBA',
+        desc: 'Mode: Clash Squad. The top players/teams from Round 1 will face off in Clash Squad. Winner will be decided by the CS match result.'
       }
     ],
     rules: [
-      'Teams must consist of 2 to 3 members.',
-      'No prior preparation or specific domain knowledge is required. Just bring boundless energy and enthusiasm!',
-      'All rules and scoring criteria for individual tasks will be announced on the spot before each challenge begins.',
-      'Comfortable casual clothing and sneakers are strongly advised due to light physical mini-games.',
-      'Cheating, intentional obstruction of other teams, or disrespecting volunteers results in an instant red card.',
-      'The spirit of the event is fun, camaraderie, and laughter.'
+      'Round 1:',
+      '🎮 Mode: Battle Royale – Solo',
+      '👤 Each player plays individually.',
+      '🚫 Teaming with other players is strictly prohibited.',
+      '❌ Hacks, cheats, scripts, config files, or third-party tools are not allowed.',
+      '🗣️ Abusive or toxic behavior may result in disqualification.',
+      '🐛 Exploiting bugs or glitches will result in disqualification.',
+      '⏰ Players must join the custom room before the announced start time.',
+      '📱 Device, internet, battery, or connection issues are the player\'s responsibility.',
+      '⚔️ Kill farming, kill trading, or intentionally helping another player is prohibited.',
+      '📸 Players may be required to provide screenshots/video proof if requested by admins',
+      '👑 Admin/Organizer decision is final.',
+      'Round 2:',
+      '🎮 Mode: Clash Squad – Solo',
+      '❌ Hacks, cheats, scripts, config files, or third-party tools are not allowed.',
+      '⚠️ Cheating or rule violations can result in immediate disqualification.',
+      '🐛 Bug/glitch abuse will result in disqualification.',
+      '📱 Network, device, battery, or disconnect issues are the player\'s responsibility.',
+      '📸 Admins may request screenshots/video proof if there is a dispute.',
+      '🏆 Winner will be decided by the CS match result.',
+      '💰 Prize distribution will happen after result verification.'
     ],
     requirements: [
-      'College Identity Card',
-      'Comfortable attire & footwear for active participation'
+      'Mobile Phone with Free Fire installed',
+      'Stable Internet Connection',
+      'College Identity Card'
     ],
     coordinators: [
       { name: 'Gokul N', role: 'Student Coordinator', phone: '+91 95001 12233', email: 'gokul.n@zenofest.in' },

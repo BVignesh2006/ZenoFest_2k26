@@ -1,0 +1,48 @@
+Description
+Title                               :   Logical Hunt
+Team members           :   1-3 members per team
+Common Rules and regulation:
+Each team must contain 1-3 members.
+ Participants can use any programming language.
+Time constraints are strictly followed.
+Number of rounds      :   3 Rounds
+Detailed description    :
+Round 1 : Basic Logical questions
+Rules:
+Each team must complete the quiz within 15 minutes.
+It is necessary to attend all questions.
+No negative mark for wrong answer.
+Each questions carry one mark.
+Task:
+Participants must answer the 15 basic logic question related MCQ’s provided to them.
+Winner calculation:
+Points are calculated by No.of correct answer and Time of Submission.
+Teams selected in round 1 will be shortlisted for round 2.
+Round 2 :Debugging
+Rules:
+Each team must complete the debugging task within the strict  20 minutes.
+It is mandatory to attend all given questions.
+No negative mark for wrong answer.
+Each correct debugging solution carries 5  marks.
+Task:
+Exactly 5 debugging questions/code snippets will be provided to every team.
+Participants must identify syntax, runtime, or logical errors in the given code and write the corrected code or output.
+  
+Winner calculation:
+Points are calculated by No.of correct answer and Time of Submission.
+Teams selected in round 2 will be shortlisted for round 3.
+Round 3 : Code logic challenge
+Rules:
+Code based challenge.
+Complete the given questions within the given time constraints.
+Code can be developed in any programming language.
+Judges decision is final.
+Task:
+2 coding challenge is provided to every team.
+Participants should write the code satisfying the constraints mentioned in the question.
+Code can be written in any programming language.
+Winner Calculation:
+Scoring: Winners will be determined based on a combination of two factors:
+Secured Points: Points awarded for correctness.
+Time: The speed at which the teams complete each task. Teams that finish earlier (with correct solutions) will score higher.
+Final Score: The total points from Three rounds, combined with the time factor, will determine the winners.

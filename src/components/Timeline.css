@@ -1,7 +1,7 @@
 /* ── ZenoFest 2K26 Reveal-on-Arrival Sticky Timeline ── */
 .timeline-scroll-wrapper {
   position: relative;
-  min-height: 220vh; /* Exact scroll height so Station 8 un-sticks immediately without dead scroll space */
+  min-height: 480vh; /* Extended scroll height so train moves slowly and smoothly between stations */
   background: transparent;
 }
 

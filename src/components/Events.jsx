@@ -103,8 +103,8 @@ export default function Events() {
           <div className="strip-sep" />
           <div className="strip-item">
             <Calendar size={16} />
-            <span className="strip-val">2 Days</span>
-            <span className="strip-lbl">Oct 08–09</span>
+            <span className="strip-val">25.09.2026</span>
+            <span className="strip-lbl">Event Date</span>
           </div>
           <div className="strip-sep" />
           <div className="strip-item">
@@ -231,15 +231,15 @@ export default function Events() {
 
                       <div className="ab-info">
                         <p className="ab-info-row">
-                          <span className="ab-info-label">Time</span>
+                          <span className="ab-info-label">Time : </span>
                           <span className="ab-info-val">{event.time}</span>
                         </p>
                         <p className="ab-info-row ab-info-clamp">
-                          <span className="ab-info-label">Date</span>
+                          <span className="ab-info-label">Date : </span>
                           <span className="ab-info-val">{event.date}</span>
                         </p>
                         <p className="ab-info-row ab-info-clamp">
-                          <span className="ab-info-label">Venue</span>
+                          <span className="ab-info-label">Venue : </span>
                           <span className="ab-info-val">{event.venue}</span>
                         </p>
                       </div>
