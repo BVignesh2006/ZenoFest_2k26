@@ -1,0 +1,369 @@
+/* ── Cyber Clock Container ── */
+.cyber-clock-container {
+  width: 100%;
+  max-width: 620px;
+  display: flex;
+  flex-direction: column;
+  user-select: none;
+  font-family: 'Space Mono', 'JetBrains Mono', monospace;
+  margin: 20px 0;
+  position: relative;
+  z-index: 20;
+}
+
+/* ── Header ── */
+.clock-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  margin-bottom: 12px;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.clock-status-tag {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  color: #6575f5;
+  text-transform: uppercase;
+}
+
+.beacon-pulse {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #55e5d2;
+  box-shadow: 0 0 10px #55e5d2;
+  animation: beaconGlow 1.8s ease-in-out infinite;
+}
+
+@keyframes beaconGlow {
+  0%, 100% {
+    opacity: 0.5;
+    transform: scale(0.9);
+    box-shadow: 0 0 6px #55e5d2;
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+    box-shadow: 0 0 14px #55e5d2, 0 0 20px rgba(85, 229, 210, 0.6);
+  }
+}
+
+.status-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  color: #6575f5;
+  text-shadow: 0 0 12px rgba(101, 117, 245, 0.4);
+}
+
+.clock-target-badge {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 0.1em;
+  background: rgba(255, 255, 255, 0.04);
+  padding: 3px 10px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* ── Grid Layout ── */
+.clock-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  width: 100%;
+  margin: 6px 0 16px 0;
+}
+
+/* ── Flip Card Unit ── */
+.countdown-unit {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.flip-card-wrapper {
+  position: relative;
+  width: 100%;
+  height: 90px;
+  border-radius: 14px;
+  background: #060716;
+  border: 1px solid rgba(101, 117, 245, 0.3);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+  perspective: 1000px;
+}
+
+.countdown-unit:hover .flip-card-wrapper {
+  border-color: rgba(101, 117, 245, 0.7);
+  box-shadow: 0 8px 30px rgba(101, 117, 245, 0.25), 0 0 15px rgba(101, 117, 245, 0.15);
+  transform: translateY(-2px);
+}
+
+/* Corner Rivets */
+.corner-rivet {
+  position: absolute;
+  top: 6px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(101, 117, 245, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  z-index: 30;
+  box-shadow: 0 0 4px rgba(101, 117, 245, 0.8);
+}
+
+.corner-rivet.top-left {
+  left: 7px;
+}
+
+.corner-rivet.top-right {
+  right: 7px;
+}
+
+/* Center Horizontal Divider */
+.card-divider {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.9);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 -1px 0 rgba(0, 0, 0, 0.8);
+  z-index: 25;
+  pointer-events: none;
+}
+
+/* Halves */
+.card-half {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 50%;
+  overflow: hidden;
+}
+
+.top-half {
+  top: 0;
+  background: linear-gradient(180deg, #0d0f28 0%, #060817 100%);
+  border-bottom: 0.5px solid rgba(0, 0, 0, 0.6);
+}
+
+.bottom-half {
+  bottom: 0;
+  background: linear-gradient(180deg, #060817 0%, #040510 100%);
+}
+
+.half-inner {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 200%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.top-half .half-inner {
+  top: 0;
+}
+
+.bottom-half .half-inner {
+  bottom: 0;
+}
+
+/* Digit Text */
+.digit-text {
+  font-family: 'Space Grotesk', 'Space Mono', sans-serif;
+  font-size: clamp(28px, 4.2vw, 44px);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  display: inline-block;
+  will-change: transform, opacity;
+}
+
+/* Digit Variants Gradients */
+.unit-indigo .digit-text {
+  background: linear-gradient(180deg, #c7d2fe 0%, #a5b4fc 40%, #ffffff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 10px rgba(101, 117, 245, 0.45));
+}
+
+.unit-purple .digit-text {
+  background: linear-gradient(180deg, #e9d5ff 0%, #c084fc 45%, #ffffff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 10px rgba(168, 85, 247, 0.45));
+}
+
+.unit-cyan .digit-text {
+  background: linear-gradient(180deg, #a5f3fc 0%, #38bdf8 45%, #ffffff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.45));
+}
+
+.unit-rose .digit-text {
+  background: linear-gradient(180deg, #fda4af 0%, #fb7185 40%, #ff405f 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 12px rgba(255, 64, 95, 0.6));
+}
+
+/* Unit Labels */
+.unit-label-container {
+  width: 100%;
+  text-align: center;
+  margin-top: 8px;
+}
+
+.unit-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+  transition: color 0.3s ease;
+}
+
+.countdown-unit:hover .unit-label {
+  color: #a5b4fc;
+}
+
+.unit-rose .unit-label {
+  color: #fb7185;
+}
+
+.unit-rose:hover .unit-label {
+  color: #fda4af;
+  text-shadow: 0 0 8px rgba(251, 113, 133, 0.5);
+}
+
+/* ── Cyber Telemetry Strip ── */
+.clock-telemetry {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 10px 14px;
+  background: rgba(6, 8, 24, 0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  gap: 12px;
+  align-items: center;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.telemetry-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.telemetry-item:not(:last-child) {
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  padding-right: 8px;
+}
+
+.telemetry-prefix {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.num-cyan {
+  color: #00f0ff;
+}
+
+.num-indigo {
+  color: #6575f5;
+}
+
+.num-rose {
+  color: #ff405f;
+}
+
+.telemetry-slash {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.telemetry-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.telemetry-val {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.1;
+}
+
+.telemetry-desc {
+  font-family: 'Space Mono', monospace;
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.val-rose {
+  color: #ff405f;
+}
+
+.desc-rose {
+  color: rgba(255, 64, 95, 0.8);
+}
+
+/* ── Responsive adjustments ── */
+@media (max-width: 640px) {
+  .clock-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .flip-card-wrapper {
+    height: 70px;
+    border-radius: 10px;
+  }
+
+  .digit-text {
+    font-size: 24px;
+  }
+
+  .unit-label {
+    font-size: 8.5px;
+    letter-spacing: 0.12em;
+  }
+
+  .clock-telemetry {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .telemetry-item:not(:last-child) {
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding-right: 0;
+    padding-bottom: 6px;
+  }
+}

@@ -1,0 +1,144 @@
+/* ── Cyber / Glass Crack Overlay Layer ── */
+.crack-overlay-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 99999;
+  overflow: hidden;
+}
+
+.crack-instance {
+  position: absolute;
+  width: 0;
+  height: 0;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  animation: crackContainerFade 1.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ── Compact Shockwave Rings ── */
+.crack-shockwave {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(6, 182, 212, 0.9);
+  box-shadow: 0 0 10px rgba(6, 182, 212, 0.8), inset 0 0 6px rgba(139, 92, 246, 0.6);
+  transform: translate(-50%, -50%) scale(0);
+  animation: shockwaveExpand 0.5s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+}
+
+.crack-shockwave-inner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 0 12px #ffffff, 0 0 20px #06b6d4;
+  transform: translate(-50%, -50%) scale(1);
+  animation: coreFlash 0.4s ease-out forwards;
+}
+
+/* ── SVG Canvas & Compact Crack Paths ── */
+.crack-svg-canvas {
+  position: absolute;
+  top: -60px;
+  left: -60px;
+  width: 120px;
+  height: 120px;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.crack-path-line {
+  fill: none;
+  stroke: var(--stroke-color, #06b6d4);
+  stroke-width: 1.6px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 0 4px var(--stroke-color, #06b6d4)) drop-shadow(0 0 8px rgba(139, 92, 246, 0.7));
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  animation: crackShatterDraw 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ── Flying Spark Particles ── */
+.crack-spark-particle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  background: var(--spark-color, #06b6d4);
+  box-shadow: 0 0 6px var(--spark-color, #06b6d4), 0 0 10px #ffffff;
+  transform: translate(-50%, -50%) translate(0, 0) scale(1);
+  animation: sparkExplode 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ── Keyframe Animations ── */
+@keyframes crackContainerFade {
+  0% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 0.85;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes shockwaveExpand {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 1;
+  }
+  80% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(5);
+    opacity: 0;
+  }
+}
+
+@keyframes coreFlash {
+  0% {
+    transform: translate(-50%, -50%) scale(1.6);
+    opacity: 1;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(0.5);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+  }
+}
+
+@keyframes crackShatterDraw {
+  0% {
+    stroke-dashoffset: 100;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes sparkExplode {
+  0% {
+    transform: translate(-50%, -50%) translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) translate(var(--tx), var(--ty)) scale(0);
+    opacity: 0;
+  }
+}

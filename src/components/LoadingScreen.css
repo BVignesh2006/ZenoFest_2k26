@@ -1,0 +1,211 @@
+/* ── Wrapper ── */
+.loading-screen-wrapper {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: #070913;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  user-select: none;
+}
+
+/* ── Background gradient orb ── */
+.orb-container {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.gradient-orb {
+  width: 500px;
+  height: 500px;
+  background: linear-gradient(
+    to right,
+    rgba(239, 68, 68, 0.3),
+    rgba(6, 182, 212, 0.4),
+    rgba(147, 51, 234, 0.3)
+  );
+  filter: blur(120px);
+  border-radius: 50%;
+}
+
+/* ── Equalizer bars ── */
+.equalizer-container {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.equalizer-bar {
+  width: 4px;
+  border-radius: 9999px;
+  transform-origin: center;
+}
+
+.bar-red-cyan {
+  background: linear-gradient(to bottom, #ef4444, #22d3ee, transparent);
+}
+
+.bar-cyan-purple {
+  background: linear-gradient(to bottom, #22d3ee, #a855f7, transparent);
+}
+
+.bar-amber-rose {
+  background: linear-gradient(to bottom, #f59e0b, #f43f5e, transparent);
+}
+
+/* ── Horizontal sweep line ── */
+.sweep-line {
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(34, 211, 238, 1),
+    rgba(239, 68, 68, 1),
+    transparent
+  );
+  box-shadow: 0 0 40px rgba(34, 211, 238, 0.6);
+}
+
+/* ── Title area ── */
+.title-area {
+  position: relative;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 16px;
+}
+
+.title-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title-block {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.main-title {
+  display: block;
+  font-family: 'Space Grotesk', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-size: clamp(56px, 14vw, 144px);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  white-space: nowrap;
+  background: linear-gradient(to right, #ef4444, #22d3ee, #9333ea);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 35px rgba(239, 68, 68, 0.8));
+}
+
+.title-glow-line {
+  width: 100%;
+  height: 12px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(6, 182, 212, 1),
+    transparent
+  );
+  border-radius: 9999px;
+  filter: blur(6px);
+  margin-top: 4px;
+  opacity: 0.8;
+}
+
+.subtitle-text {
+  font-family: 'Space Grotesk', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-size: clamp(20px, 5vw, 48px);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: #ffffff;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.5));
+}
+
+.year-accent {
+  color: #22d3ee;
+}
+
+.tagline-text {
+  font-family: 'Space Mono', 'Courier New', monospace;
+  font-size: clamp(10px, 2vw, 16px);
+  letter-spacing: 0.4em;
+  color: rgba(34, 211, 238, 0.8);
+  margin-top: 12px;
+  text-transform: uppercase;
+}
+
+/* ── Bottom Netflix-style bars ── */
+.bottom-bars {
+  position: absolute;
+  bottom: 48px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 20;
+}
+
+.bottom-bars-label {
+  font-family: 'Space Mono', 'Courier New', monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  color: rgba(255, 255, 255, 0.4);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.bottom-bars-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  height: 20px;
+}
+
+.bottom-bar {
+  width: 4px;
+  background-color: #22d3ee;
+  border-radius: 9999px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 640px) {
+  .equalizer-container {
+    gap: 2px;
+  }
+  .equalizer-bar {
+    width: 2px;
+  }
+  .gradient-orb {
+    width: 280px;
+    height: 280px;
+  }
+  .bottom-bars {
+    bottom: 24px;
+    gap: 8px;
+  }
+  .bottom-bars-label {
+    font-size: 8px;
+  }
+}
