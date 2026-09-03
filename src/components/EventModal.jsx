@@ -96,26 +96,6 @@ export default function EventModal({ event, onClose, onOpenRegister }) {
 
               <h2 className="modal-title">{event.title}</h2>
               <p className="modal-tagline">{event.tagline}</p>
-
-              {/* Quick Info Grid */}
-              <div className="modal-quick-info">
-                <div className="quick-info-item highlight">
-                  <Calendar size={15} className="info-icon cyan" />
-                  <span>Date: {event.date}</span>
-                </div>
-                <div className="quick-info-item highlight">
-                  <Clock size={15} className="info-icon cyan" />
-                  <span>Timing: {event.time}</span>
-                </div>
-                <div className="quick-info-item highlight">
-                  <Users size={15} className="info-icon purple" />
-                  <span>Team: {event.teamSize}</span>
-                </div>
-                <div className="quick-info-item">
-                  <MapPin size={15} className="info-icon purple" />
-                  <span>Venue: {event.venue}</span>
-                </div>
-              </div>
             </div>
           </div>
 
@@ -153,57 +133,41 @@ export default function EventModal({ event, onClose, onOpenRegister }) {
 
           {/* Modal Scrollable Body */}
           <div className="modal-body-scroll" ref={bodyScrollRef}>
+            {/* 4-Column Event Info Summary Banner (Timing, Date, Team, Venue) */}
+            <div className="event-timings-summary-banner">
+              <div className="timing-summary-item">
+                <Clock size={18} className="t-icon" />
+                <div>
+                  <span className="t-label">Event Timing</span>
+                  <span className="t-val">{event.time}</span>
+                </div>
+              </div>
+              <div className="timing-summary-item">
+                <Calendar size={18} className="t-icon" />
+                <div>
+                  <span className="t-label">Event Date</span>
+                  <span className="t-val">{event.date}</span>
+                </div>
+              </div>
+              <div className="timing-summary-item">
+                <Users size={18} className="t-icon" />
+                <div>
+                  <span className="t-label">Team Members</span>
+                  <span className="t-val">{event.teamSize}</span>
+                </div>
+              </div>
+              <div className="timing-summary-item">
+                <MapPin size={18} className="t-icon" />
+                <div>
+                  <span className="t-label">Reporting Venue</span>
+                  <span className="t-val">{event.venue}</span>
+                </div>
+              </div>
+            </div>
+
             {/* ── TAB 1: RULES & INSTRUCTIONS ── */}
             {activeTab === 'rules' && (
-              <motion.div
-                key="rules"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.25 }}
-                className="modal-tab-pane"
-              >
-                <div className="tab-pane-header-box">
-                  <h3 className="tab-pane-title">
-                    <ShieldAlert size={20} className="title-icon cyan" />
-                    <span>Official Rules & General Instructions</span>
-                  </h3>
-                  <p className="tab-pane-subtitle">
-                    Please read and strictly adhere to the following rules and instructions throughout the event.
-                  </p>
-                </div>
-
-                {/* Event Specs Summary Banner */}
-                <div className="event-timings-summary-banner">
-                  <div className="timing-summary-item">
-                    <Clock size={18} className="t-icon" />
-                    <div>
-                      <span className="t-label">Event Timing</span>
-                      <span className="t-val">{event.time}</span>
-                    </div>
-                  </div>
-                  <div className="timing-summary-item">
-                    <Calendar size={18} className="t-icon" />
-                    <div>
-                      <span className="t-label">Event Date</span>
-                      <span className="t-val">{event.date}</span>
-                    </div>
-                  </div>
-                  <div className="timing-summary-item">
-                    <Users size={18} className="t-icon" />
-                    <div>
-                      <span className="t-label">Team Members</span>
-                      <span className="t-val">{event.teamSize}</span>
-                    </div>
-                  </div>
-                  <div className="timing-summary-item">
-                    <MapPin size={18} className="t-icon" />
-                    <div>
-                      <span className="t-label">Reporting Venue</span>
-                      <span className="t-val">{event.venue}</span>
-                    </div>
-                  </div>
-                </div>
-
+              <div className="modal-tab-pane">
                 {/* Rules List with Section Divider Headers */}
                 <div className="rules-list">
                   {event.rules.map((rule, idx) => {
@@ -240,60 +204,12 @@ export default function EventModal({ event, onClose, onOpenRegister }) {
                     ))}
                   </div>
                 </div>
-              </motion.div>
+              </div>
             )}
 
             {/* ── TAB 2: ROUNDS & TIMINGS ── */}
             {activeTab === 'rounds' && (
-              <motion.div
-                key="rounds"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.25 }}
-                className="modal-tab-pane"
-              >
-                <div className="tab-pane-header-box">
-                  <h3 className="tab-pane-title">
-                    <Layers size={20} className="title-icon cyan" />
-                    <span>Event Rounds & Schedule Timings</span>
-                  </h3>
-                  <p className="tab-pane-subtitle">
-                    Round-by-round breakdown, timing durations, team format, and venue schedule.
-                  </p>
-                </div>
-
-                {/* 4-Column Timings, Date & Team Members Summary Banner */}
-                <div className="event-timings-summary-banner">
-                  <div className="timing-summary-item">
-                    <Clock size={18} className="t-icon" />
-                    <div>
-                      <span className="t-label">Event Timing</span>
-                      <span className="t-val">{event.time}</span>
-                    </div>
-                  </div>
-                  <div className="timing-summary-item">
-                    <Calendar size={18} className="t-icon" />
-                    <div>
-                      <span className="t-label">Event Date</span>
-                      <span className="t-val">{event.date}</span>
-                    </div>
-                  </div>
-                  <div className="timing-summary-item">
-                    <Users size={18} className="t-icon" />
-                    <div>
-                      <span className="t-label">Team Members</span>
-                      <span className="t-val">{event.teamSize}</span>
-                    </div>
-                  </div>
-                  <div className="timing-summary-item">
-                    <MapPin size={18} className="t-icon" />
-                    <div>
-                      <span className="t-label">Reporting Venue</span>
-                      <span className="t-val">{event.venue}</span>
-                    </div>
-                  </div>
-                </div>
-
+              <div className="modal-tab-pane">
                 {/* Rounds Timeline */}
                 <div className="rounds-timeline">
                   {event.rounds.map((round, idx) => (
@@ -317,23 +233,13 @@ export default function EventModal({ event, onClose, onOpenRegister }) {
                     </div>
                   ))}
                 </div>
-              </motion.div>
+              </div>
             )}
 
             {/* ── TAB 3: OVERVIEW & PRIZES ── */}
             {activeTab === 'overview' && (
-              <motion.div
-                key="overview"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.25 }}
-                className="modal-tab-pane"
-              >
+              <div className="modal-tab-pane">
                 <div className="overview-card">
-                  <h3 className="tab-pane-title">
-                    <Sparkles size={20} className="title-icon cyan" />
-                    <span>Event Synopsis & Overview</span>
-                  </h3>
                   <p className="overview-long-text">{event.overview}</p>
                 </div>
 
@@ -368,59 +274,84 @@ export default function EventModal({ event, onClose, onOpenRegister }) {
                     * All verified participants will receive an official National-Level Certificate from ZenoFest 2K26, PSR Institutions.
                   </div>
                 </div>
-              </motion.div>
+              </div>
             )}
 
             {/* ── TAB 4: COORDINATORS ── */}
-            {activeTab === 'coordinators' && (
-              <motion.div
-                key="coordinators"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.25 }}
-                className="modal-tab-pane"
-              >
-                <h3 className="tab-pane-title">
-                  <UserCheck size={20} className="title-icon cyan" />
-                  <span>Event Lead Coordinators</span>
-                </h3>
-                <p className="coordinators-intro">
-                  Have questions regarding event guidelines, technical setup, or on-spot reporting? Reach out directly to the event leads below:
-                </p>
+            {activeTab === 'coordinators' && (() => {
+              const staffCoordinators = event.coordinators.filter(c =>
+                c.role.toLowerCase().includes('staff') ||
+                c.role.toLowerCase().includes('faculty') ||
+                c.role.toLowerCase().includes('advisor')
+              )
+              const studentCoordinators = event.coordinators.filter(c =>
+                !staffCoordinators.includes(c)
+              )
 
-                <div className="coordinators-grid">
-                  {event.coordinators.map((coord, idx) => (
-                    <div key={idx} className="coordinator-card">
-                      <div className="coord-avatar">
-                        {coord.name.charAt(0)}
-                      </div>
-                      <div className="coord-details">
-                        <h4 className="coord-name">{coord.name}</h4>
-                        <span className="coord-role">{coord.role}</span>
-                        <div className="coord-links">
+              const renderCard = (coord, idx) => (
+                <div key={idx} className="coordinator-card">
+                  <div className="coord-avatar">
+                    {coord.name.charAt(0)}
+                  </div>
+                  <div className="coord-details">
+                    <h4 className="coord-name">{coord.name}</h4>
+                    <span className="coord-role">{coord.role}</span>
+                    {(coord.phone || coord.email) && (
+                      <div className="coord-links">
+                        {coord.phone && (
                           <a href={`tel:${coord.phone.replace(/\s+/g, '')}`} className="coord-link">
                             <Phone size={14} />
                             <span>{coord.phone}</span>
                           </a>
+                        )}
+                        {coord.email && (
                           <a href={`mailto:${coord.email}`} className="coord-link">
                             <Mail size={14} />
                             <span>{coord.email}</span>
                           </a>
-                        </div>
+                        )}
                       </div>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="venue-detail-box">
-                  <MapPin size={22} className="venue-box-icon" />
-                  <div>
-                    <h5>Venue Location & Schedule</h5>
-                    <p>{event.venue} — ZenoFest Campus, PSR Engineering College, Sivakasi ({event.date} @ {event.time}).</p>
+                    )}
                   </div>
                 </div>
-              </motion.div>
-            )}
+              )
+
+              return (
+                <div className="modal-tab-pane">
+                  {staffCoordinators.length > 0 && (
+                    <div className="coordinator-section" style={{ marginBottom: '24px' }}>
+                      <h4 className="coord-group-title">
+                        <UserCheck size={16} className="title-icon cyan" />
+                        <span>Staff Coordinator{staffCoordinators.length > 1 ? 's' : ''}</span>
+                      </h4>
+                      <div className="coordinators-grid">
+                        {staffCoordinators.map(renderCard)}
+                      </div>
+                    </div>
+                  )}
+
+                  {studentCoordinators.length > 0 && (
+                    <div className="coordinator-section" style={{ marginBottom: '24px' }}>
+                      <h4 className="coord-group-title">
+                        <UserCheck size={16} className="title-icon purple" />
+                        <span>Student Coordinators</span>
+                      </h4>
+                      <div className="coordinators-grid">
+                        {studentCoordinators.map(renderCard)}
+                      </div>
+                    </div>
+                  )}
+
+                  <div className="venue-detail-box">
+                    <MapPin size={22} className="venue-box-icon" />
+                    <div>
+                      <h5>Venue Location & Schedule</h5>
+                      <p>{event.venue} — ZenoFest Campus, PSR Engineering College, Sivakasi ({event.date} @ {event.time}).</p>
+                    </div>
+                  </div>
+                </div>
+              )
+            })()}
           </div>
 
           {/* Modal Footer */}

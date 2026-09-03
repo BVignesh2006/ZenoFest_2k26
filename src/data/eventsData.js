@@ -52,9 +52,13 @@ export const eventsData = [
       'Proper documentation related to the project'
     ],
     coordinators: [
-      { name: 'Arun Kumar M', role: 'Student Coordinator', phone: '+91 98765 43210', email: 'arunkumar.it@zenofest.in' },
-      { name: 'Priya Sundar', role: 'Student Coordinator', phone: '+91 87654 32109', email: 'priya.s@zenofest.in' },
-      { name: 'Dr. K. Ramesh', role: 'Faculty Advisor (Dept of IT)', phone: '+91 94432 56789', email: 'ramesh.hod@zenofest.in' }
+      { name: 'Dr. P. Edwin Dhas', role: 'Staff Coordinator (AP/IT)' },
+      { name: 'Ramakrishnan M', role: 'Student Coordinator (III/IT)' },
+      { name: 'Yukanthan P G', role: 'Student Coordinator (III/IT)' },
+      { name: 'Guhan S', role: 'Student Coordinator (III/IT)' },
+      { name: 'Sumithra S', role: 'Student Coordinator (III/IT)' },
+      { name: 'Narmatha Baby B', role: 'Student Coordinator (III/IT)' },
+      { name: 'Rishiga R', role: 'Student Coordinator (III/IT)' }
     ]
   },
   {
@@ -87,15 +91,15 @@ export const eventsData = [
       },
       {
         roundNumber: '02',
-        title: 'Wireframing / User Flow',
-        time: '25 Mins',
-        desc: 'Create wireframes and define the user flow.'
-      },
-      {
-        roundNumber: '03',
         title: 'UI Design',
         time: '45 Mins',
         desc: 'Design the high-fidelity UI screens in Figma.'
+      },
+      {
+        roundNumber: '03',
+        title: 'Wireframing / User Flow',
+        time: '25 Mins',
+        desc: 'Create wireframes and define the user flow.'
       },
       {
         roundNumber: '04',
@@ -125,9 +129,12 @@ export const eventsData = [
       'College ID card of all team members'
     ],
     coordinators: [
-      { name: 'Dharshini R', role: 'Student Coordinator', phone: '+91 97890 12345', email: 'dharshini.des@zenofest.in' },
-      { name: 'Vignesh K', role: 'Student Coordinator', phone: '+91 94432 10987', email: 'vignesh.k@zenofest.in' },
-      { name: 'Prof. M. Selvi', role: 'Faculty Coordinator', phone: '+91 98421 98765', email: 'selvi.m@zenofest.in' }
+      { name: 'Mr. T. Saravanan', role: 'Staff Coordinator (AP/IT)' },
+      { name: 'Kannan K', role: 'Student Coordinator (III/IT)' },
+      { name: 'Mari Selvam M', role: 'Student Coordinator (III/IT)' },
+      { name: 'Madhumitha B', role: 'Student Coordinator (III/IT)' },
+      { name: 'Muthu Lakshmi R', role: 'Student Coordinator (III/IT)' },
+      { name: 'Saranya S', role: 'Student Coordinator (III/IT)' }
     ]
   },
   {
@@ -183,9 +190,13 @@ export const eventsData = [
       'College Identity Card of all team members'
     ],
     coordinators: [
-      { name: 'Karthik M', role: 'Student Lead', phone: '+91 99440 55667', email: 'karthik.algo@zenofest.in' },
-      { name: 'Swetha B', role: 'Student Coordinator', phone: '+91 96290 88776', email: 'swetha.b@zenofest.in' },
-      { name: 'Dr. S. Anand', role: 'Faculty Coordinator', phone: '+91 94420 11223', email: 'anand.s@zenofest.in' }
+      { name: 'Ms. T. Bharathi Lakshmi', role: 'Staff Coordinator (AP/IT)' },
+      { name: 'Ms. M. Komathi Sathya', role: 'Staff Coordinator (AP/IT)' },
+      { name: 'Anu K', role: 'Student Coordinator (III/IT)' },
+      { name: 'Lavanya K', role: 'Student Coordinator (III/IT)' },
+      { name: 'Jothi Lakshmi K', role: 'Student Coordinator (III/IT)' },
+      { name: 'Akash B', role: 'Student Coordinator (III/IT)' },
+      { name: 'Bharathan K', role: 'Student Coordinator (III/IT)' }
     ]
   },
 
@@ -243,9 +254,11 @@ export const eventsData = [
       'Presence of all teammates on stage on time'
     ],
     coordinators: [
-      { name: 'Naveen Raj C', role: 'Student Coordinator', phone: '+91 91234 56780', email: 'naveen.raj@zenofest.in' },
-      { name: 'Ananya G', role: 'Student Coordinator', phone: '+91 98401 23456', email: 'ananya.g@zenofest.in' },
-      { name: 'Prof. R. Kavitha', role: 'Faculty Coordinator', phone: '+91 94860 77889', email: 'kavitha.r@zenofest.in' }
+      { name: 'Mr. S. Shunmuga Sundaram', role: 'Staff Coordinator (AP/IT)' },
+      { name: 'Manivasaga Perumal P', role: 'Student Coordinator (III/IT)' },
+      { name: 'Jeya Prakash S', role: 'Student Coordinator (III/IT)' },
+      { name: 'Priya Dharshini C', role: 'Student Coordinator (III/IT)' },
+      { name: 'Harsika Sri M', role: 'Student Coordinator (III/IT)' }
     ]
   },
   {
@@ -303,9 +316,13 @@ export const eventsData = [
       'Punctual reporting 15 mins prior to commencement'
     ],
     coordinators: [
-      { name: 'Rahul S', role: 'Student Coordinator', phone: '+91 97531 08642', email: 'rahul.s@zenofest.in' },
-      { name: 'Sneha R', role: 'Student Coordinator', phone: '+91 93612 34567', email: 'sneha.r@zenofest.in' },
-      { name: 'Prof. T. Venkatesh', role: 'Faculty Coordinator', phone: '+91 94431 22334', email: 'venkatesh.t@zenofest.in' }
+      { name: 'Ms. M. Anitha', role: 'Staff Coordinator (AP/IT)' },
+      { name: 'Ms. S. Sumathi', role: 'Staff Coordinator (AP/IT)' },
+      { name: 'Manoj M', role: 'Student Coordinator (III/IT)' },
+      { name: 'Jagan Kumar V', role: 'Student Coordinator (III/IT)' },
+      { name: 'Caroline M', role: 'Student Coordinator (III/IT)' },
+      { name: 'Sujitha M', role: 'Student Coordinator (III/IT)' },
+      { name: 'Kanaga Yuvasri R', role: 'Student Coordinator (III/IT)' }
     ]
   },
   {
@@ -372,9 +389,11 @@ export const eventsData = [
       'College Identity Card'
     ],
     coordinators: [
-      { name: 'Gokul N', role: 'Student Coordinator', phone: '+91 95001 12233', email: 'gokul.n@zenofest.in' },
-      { name: 'Meera V', role: 'Student Coordinator', phone: '+91 98412 33445', email: 'meera.v@zenofest.in' },
-      { name: 'Dr. P. Murugan', role: 'Faculty Coordinator', phone: '+91 94440 99887', email: 'murugan.p@zenofest.in' }
+      { name: 'Mr. T. Saravanan', role: 'Staff Coordinator (AP/IT)' },
+      { name: 'Ragavan K', role: 'Student Coordinator (III/IT)' },
+      { name: 'Abilash Karthick G', role: 'Student Coordinator (III/IT)' },
+      { name: 'Muthu Koodalingam V', role: 'Student Coordinator (III/IT)' },
+      { name: 'Thiru Kumaran M', role: 'Student Coordinator (III/IT)' }
     ]
   }
 ]

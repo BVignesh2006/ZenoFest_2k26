@@ -120,7 +120,7 @@ export default function Events() {
             animate={{
               opacity: isHovered ? 1 : 0,
               z: isHovered ? 180 : 0,
-              y: isHovered ? -100 : 0,
+              y: isHovered ? -75 : 0,
               rotateX: isHovered ? -75 : 0
             }}
             transition={{ type: 'spring', stiffness: 120, damping: 18 }}
