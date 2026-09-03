@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { createPortal } from 'react-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, CheckCircle, Trophy, Users, Send } from 'lucide-react'
 
@@ -41,16 +42,16 @@ export default function RegisterModal({ event, onClose }) {
     }, 800)
   }
 
-  return (
-    <AnimatePresence>
+  const modalContent = (
+    <AnimatePresence key={event.id}>
       <div className="event-modal-backdrop" onClick={onClose}>
         <motion.div
           className="event-modal-container register-modal-container"
           onClick={(e) => e.stopPropagation()}
-          initial={{ opacity: 0, scale: 0.95, y: 20 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          exit={{ opacity: 0, scale: 0.95, y: 20 }}
-          transition={{ duration: 0.3 }}
+          initial={{ opacity: 0, scale: 0.94 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.94 }}
+          transition={{ duration: 0.28 }}
         >
           {/* Cyber Corner Accents */}
           <div className="modal-corner modal-corner-tl" />
@@ -240,4 +241,6 @@ export default function RegisterModal({ event, onClose }) {
       </div>
     </AnimatePresence>
   )
+
+  return createPortal(modalContent, document.body)
 }

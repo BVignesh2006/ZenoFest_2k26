@@ -41,10 +41,120 @@ export default function Events() {
     })
   }, [activeCategory, searchQuery])
 
+  const techEvents = useMemo(() => {
+    return filteredEvents.filter((e) => e.type === 'TECHNICAL')
+  }, [filteredEvents])
+
+  const nonTechEvents = useMemo(() => {
+    return filteredEvents.filter((e) => e.type === 'NON-TECHNICAL')
+  }, [filteredEvents])
+
   const counts = {
     all: eventsData.length,
     technical: eventsData.filter((e) => e.type === 'TECHNICAL').length,
     nonTechnical: eventsData.filter((e) => e.type === 'NON-TECHNICAL').length
+  }
+
+  const renderEventCard = (event, idx) => {
+    const isHovered = hoveredId === event.id
+    const imgFailed = !!imgFails[event.id]
+    const openRules = () => setSelectedEvent(event)
+
+    return (
+      <motion.div
+        key={event.id}
+        layout
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.92 }}
+        transition={{ duration: 0.45, delay: idx * 0.07 }}
+        className="ab-tile-wrap"
+        style={{ perspective: 1200 }}
+        onMouseEnter={() => setHoveredId(event.id)}
+        onMouseLeave={() => setHoveredId(null)}
+        onClick={() => {
+          if (window.innerWidth < 768) {
+            isHovered ? openRules() : setHoveredId(event.id)
+          } else {
+            openRules()
+          }
+        }}
+      >
+        <div className={`ab-bloom ${isHovered ? 'on' : ''}`} />
+
+        <motion.div
+          className="ab-stack"
+          style={{ transformStyle: 'preserve-3d' }}
+          animate={{ rotateX: 75 * !!isHovered }}
+          transition={{ type: 'spring', stiffness: 100, damping: 15 }}
+        >
+          {/* Card Frame */}
+          <div className={`ab-frame ${isHovered ? 'hovered' : ''}`}>
+            {!imgFailed ? (
+              <img
+                src={event.coverImage}
+                alt={event.title}
+                loading="lazy"
+                className={`ab-img ${isHovered ? 'hovered' : ''}`}
+                onError={() => setImgFails((p) => (p[event.id] ? p : { ...p, [event.id]: true }))}
+              />
+            ) : (
+              <div className="ab-img-fallback shown">
+                <span>{event.title}</span>
+              </div>
+            )}
+            <div className="ab-overlay" />
+            {event.hasCashPrize && (
+              <span className="ab-cash-chip">₹10,000 Cash Prize</span>
+            )}
+          </div>
+
+          {/* Reveal Layer */}
+          <motion.div
+            className="ab-reveal"
+            initial={{ opacity: 0, z: 0 }}
+            animate={{
+              opacity: isHovered ? 1 : 0,
+              z: isHovered ? 180 : 0,
+              y: isHovered ? -100 : 0,
+              rotateX: isHovered ? -75 : 0
+            }}
+            transition={{ type: 'spring', stiffness: 120, damping: 18 }}
+            style={{ transformStyle: 'preserve-3d', pointerEvents: isHovered ? 'auto' : 'none' }}
+          >
+            <div className="ab-title-box">
+              <h4 className="ab-tile-title">{event.title}</h4>
+            </div>
+
+            <div className="ab-divider" />
+
+            <div className="ab-info">
+              <p className="ab-info-row">
+                <span className="ab-info-label">Time : </span>
+                <span className="ab-info-val">{event.time}</span>
+              </p>
+              <p className="ab-info-row ab-info-clamp">
+                <span className="ab-info-label">Date : </span>
+                <span className="ab-info-val">{event.date}</span>
+              </p>
+              <p className="ab-info-row ab-info-clamp">
+                <span className="ab-info-label">Venue : </span>
+                <span className="ab-info-val">{event.venue}</span>
+              </p>
+            </div>
+
+            <motion.button
+              className="ab-know-more"
+              onClick={(e) => { e.stopPropagation(); openRules() }}
+              whileHover={{ scale: 1.1, boxShadow: '0px 0px 20px rgb(220, 38, 38)', backgroundColor: '#ffffff', color: '#000000' }}
+              whileTap={{ scale: 0.9 }}
+            >
+              Know More
+            </motion.button>
+          </motion.div>
+        </motion.div>
+      </motion.div>
+    )
   }
 
   return (
@@ -153,112 +263,43 @@ export default function Events() {
           </div>
         </motion.div>
 
-        {/* ════════ EVENTS FLIP CARD GRID ════════ */}
-        <motion.div layout className="flip-grid">
-          <AnimatePresence mode="popLayout">
-            {filteredEvents.map((event, idx) => {
-              const isHovered = hoveredId === event.id
-              const imgFailed = !!imgFails[event.id]
-              const openRules = () => setSelectedEvent(event)
+        {/* ════════ TECHNICAL EVENTS SECTION ════════ */}
+        {techEvents.length > 0 && (
+          <div className="events-category-block">
+            <div className="category-header-banner cyan-banner">
+              <div className="cat-header-left">
+                <Code2 size={22} className="cat-icon cyan-icon" />
+                <h3 className="category-title">TECHNICAL EVENTS</h3>
+              </div>
+              <span className="cat-count-badge cyan-badge">{techEvents.length} Competitions</span>
+            </div>
 
-              return (
-                <motion.div
-                  key={event.id}
-                  layout
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.92 }}
-                  transition={{ duration: 0.45, delay: idx * 0.07 }}
-                  className="ab-tile-wrap"
-                  style={{ perspective: 1200 }}
-                  onMouseEnter={() => setHoveredId(event.id)}
-                  onMouseLeave={() => setHoveredId(null)}
-                  onClick={() => {
-                    if (window.innerWidth < 768) {
-                      isHovered ? openRules() : setHoveredId(event.id)
-                    } else {
-                      openRules()
-                    }
-                  }}
-                >
-                  <div className={`ab-bloom ${isHovered ? 'on' : ''}`} />
+            <motion.div layout className="flip-grid">
+              <AnimatePresence mode="popLayout">
+                {techEvents.map((event, idx) => renderEventCard(event, idx))}
+              </AnimatePresence>
+            </motion.div>
+          </div>
+        )}
 
-                  <motion.div
-                    className="ab-stack"
-                    style={{ transformStyle: 'preserve-3d' }}
-                    animate={{ rotateX: 75 * !!isHovered }}
-                    transition={{ type: 'spring', stiffness: 100, damping: 15 }}
-                  >
-                    {/* ── Card Frame (tilts back on hover) ── */}
-                    <div className={`ab-frame ${isHovered ? 'hovered' : ''}`}>
-                      {!imgFailed ? (
-                        <img
-                          src={event.coverImage}
-                          alt={event.title}
-                          loading="lazy"
-                          className={`ab-img ${isHovered ? 'hovered' : ''}`}
-                          onError={() => setImgFails((p) => (p[event.id] ? p : { ...p, [event.id]: true }))}
-                        />
-                      ) : (
-                        <div className="ab-img-fallback shown">
-                          <span>{event.title}</span>
-                        </div>
-                      )}
-                      <div className="ab-overlay" />
-                      {event.hasCashPrize && (
-                        <span className="ab-cash-chip">₹10,000 Cash Prize</span>
-                      )}
-                    </div>
+        {/* ════════ NON-TECHNICAL EVENTS SECTION ════════ */}
+        {nonTechEvents.length > 0 && (
+          <div className="events-category-block">
+            <div className="category-header-banner pink-banner">
+              <div className="cat-header-left">
+                <Gamepad2 size={22} className="cat-icon pink-icon" />
+                <h3 className="category-title">NON-TECHNICAL EVENTS</h3>
+              </div>
+              <span className="cat-count-badge pink-badge">{nonTechEvents.length} Competitions</span>
+            </div>
 
-                    {/* ── Reveal Layer (rises toward viewer on hover) ── */}
-                    <motion.div
-                      className="ab-reveal"
-                      initial={{ opacity: 0, z: 0 }}
-                      animate={{
-                        opacity: isHovered ? 1 : 0,
-                        z: isHovered ? 180 : 0,
-                        y: isHovered ? -100 : 0,
-                        rotateX: isHovered ? -75 : 0
-                      }}
-                      transition={{ type: 'spring', stiffness: 120, damping: 18 }}
-                      style={{ transformStyle: 'preserve-3d', pointerEvents: isHovered ? 'auto' : 'none' }}
-                    >
-                      <div className="ab-title-box">
-                        <h4 className="ab-tile-title">{event.title}</h4>
-                      </div>
-
-                      <div className="ab-divider" />
-
-                      <div className="ab-info">
-                        <p className="ab-info-row">
-                          <span className="ab-info-label">Time : </span>
-                          <span className="ab-info-val">{event.time}</span>
-                        </p>
-                        <p className="ab-info-row ab-info-clamp">
-                          <span className="ab-info-label">Date : </span>
-                          <span className="ab-info-val">{event.date}</span>
-                        </p>
-                        <p className="ab-info-row ab-info-clamp">
-                          <span className="ab-info-label">Venue : </span>
-                          <span className="ab-info-val">{event.venue}</span>
-                        </p>
-                      </div>
-
-                      <motion.button
-                        className="ab-know-more"
-                        onClick={(e) => { e.stopPropagation(); openRules() }}
-                        whileHover={{ scale: 1.1, boxShadow: '0px 0px 20px rgb(220, 38, 38)', backgroundColor: '#ffffff', color: '#000000' }}
-                        whileTap={{ scale: 0.9 }}
-                      >
-                        Know More
-                      </motion.button>
-                    </motion.div>
-                  </motion.div>
-                </motion.div>
-              )
-            })}
-          </AnimatePresence>
-        </motion.div>
+            <motion.div layout className="flip-grid">
+              <AnimatePresence mode="popLayout">
+                {nonTechEvents.map((event, idx) => renderEventCard(event, idx))}
+              </AnimatePresence>
+            </motion.div>
+          </div>
+        )}
 
         {/* Empty State */}
         {filteredEvents.length === 0 && (

@@ -1,3 +1,10 @@
+import projectExpoImg from './PROJECT-EXPO.png'
+import uiUxImg from './ui ux .png'
+import logicHuntImg from './logic hunt.jpg'
+import whoAmIImg from './Who-Am-I-1.png'
+import rapidFireImg from './rapid-fire-jpg.jpg'
+import freeFireImg from './free-fire-iphone-5.jpg'
+
 export const eventsData = [
   // ── TECHNICAL EVENTS ──
   {
@@ -7,7 +14,7 @@ export const eventsData = [
     badge: 'FLAGSHIP EVENT',
     tagline: 'Unveil cutting-edge hardware prototypes and software innovations.',
     shortDesc: 'A national-level innovation showcase where visionary students present functional prototypes across AI/ML, IoT, Web3, Robotics, and Embedded Systems before industry experts.',
-    coverImage: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=800&auto=format&fit=crop&q=80',
+    coverImage: projectExpoImg,
     accentColor: '#06b6d4',
     teamSize: '2 – 3 Members',
     date: '25.09.2026',
@@ -55,7 +62,7 @@ export const eventsData = [
     badge: 'DESIGN SPRINT',
     tagline: 'Craft intuitive interfaces, micro-interactions, and visual design masterpieces.',
     shortDesc: 'A fast-paced interactive design challenge where designers tackle a live real-world problem statement to architect high-fidelity Figma prototypes and design systems.',
-    coverImage: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&auto=format&fit=crop&q=80',
+    coverImage: uiUxImg,
     accentColor: '#8b5cf6',
     teamSize: '2 – 3 Members',
     date: '25.09.2026',
@@ -126,7 +133,7 @@ export const eventsData = [
     badge: 'ALGO-QUEST',
     tagline: 'Crack cryptic ciphers, debug broken codebases, and conquer the algorithmic maze.',
     shortDesc: 'A multi-tier algorithmic code quest where programmers follow cyber breadcrumbs, fix obfuscated codebases, and crack logic puzzles to unearth the master key.',
-    coverImage: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&auto=format&fit=crop&q=80',
+    coverImage: logicHuntImg,
     accentColor: '#3b82f6',
     teamSize: '2 – 3 Members',
     date: '25.09.2026',
@@ -184,7 +191,7 @@ export const eventsData = [
     badge: 'DEDUCTION SHOWDOWN',
     tagline: 'Test your sharp instincts, deductive reasoning, and pop-culture tech mastery.',
     shortDesc: 'A captivating 20-questions mystery showdown where players unmask iconic tech legends, pop culture titans, sci-fi movies, and quirky personas against the clock.',
-    coverImage: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?w=800&auto=format&fit=crop&q=80',
+    coverImage: whoAmIImg,
     accentColor: '#ec4899',
     teamSize: '2 – 3 Members',
     date: '25.09.2026',
@@ -240,7 +247,7 @@ export const eventsData = [
     badge: 'LIGHTNING TRIVIA',
     tagline: 'Lightning buzzers, instant wit, and split-second pop & tech trivia.',
     shortDesc: 'A buzzer-driven quiz arena packed with fast-paced questions, music riffs, tech logos, viral memes, and general knowledge where hesitations cost victory.',
-    coverImage: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=800&auto=format&fit=crop&q=80',
+    coverImage: rapidFireImg,
     accentColor: '#f59e0b',
     teamSize: '2 – 3 Members',
     date: '25.09.2026',
@@ -298,7 +305,7 @@ export const eventsData = [
     badge: 'ESPORTS ARENA',
     tagline: 'Drop in, survive, and conquer the battlefield.',
     shortDesc: 'Compete in the ultimate Free Fire battle royale and clash squad tournament. Prove your skills and claim the Booyah!',
-    coverImage: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&auto=format&fit=crop&q=80',
+    coverImage: freeFireImg,
     accentColor: '#ef4444',
     teamSize: '2 – 3 Members',
     date: '25.09.2026',
