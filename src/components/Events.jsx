@@ -96,6 +96,10 @@ export default function Events() {
                 alt={event.title}
                 loading="lazy"
                 className={`ab-img ${isHovered ? 'hovered' : ''}`}
+                style={{
+                  objectFit: event.objectFit || 'cover',
+                  objectPosition: event.objectPosition || 'center'
+                }}
                 onError={() => setImgFails((p) => (p[event.id] ? p : { ...p, [event.id]: true }))}
               />
             ) : (

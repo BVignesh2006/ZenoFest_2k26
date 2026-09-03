@@ -70,7 +70,15 @@ export default function EventModal({ event, onClose, onOpenRegister }) {
           {/* Modal Header */}
           <div className="modal-hero">
             <div className="modal-hero-bg">
-              <img src={event.coverImage} alt={event.title} className="modal-hero-img" />
+              <img
+                src={event.coverImage}
+                alt={event.title}
+                className="modal-hero-img"
+                style={{
+                  objectFit: event.objectFit || 'cover',
+                  objectPosition: event.objectPosition || 'center'
+                }}
+              />
               <div className="modal-hero-gradient" />
             </div>
 

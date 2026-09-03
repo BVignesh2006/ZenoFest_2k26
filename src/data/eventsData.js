@@ -1,9 +1,9 @@
-import projectExpoImg from './PROJECT-EXPO.png'
+import projectExpoImg from './p3.jpeg'
 import uiUxImg from './ui ux .png'
-import logicHuntImg from './logic hunt.jpg'
+import logicHuntImg from './p1.jpeg'
 import whoAmIImg from './Who-Am-I-1.png'
-import rapidFireImg from './rapid-fire-jpg.jpg'
-import freeFireImg from './free-fire-iphone-5.jpg'
+import rapidFireImg from './p2.jpeg'
+import freeFireImg from './WhatsApp Image 2026-09-03 at 3.09.48 PM.jpeg'
 
 export const eventsData = [
   // ── TECHNICAL EVENTS ──
@@ -15,6 +15,8 @@ export const eventsData = [
     tagline: 'Unveil cutting-edge hardware prototypes and software innovations.',
     shortDesc: 'A national-level innovation showcase where visionary students present functional prototypes across AI/ML, IoT, Web3, Robotics, and Embedded Systems before industry experts.',
     coverImage: projectExpoImg,
+    objectFit: 'cover',
+    objectPosition: 'center',
     accentColor: '#06b6d4',
     teamSize: '2 – 3 Members',
     date: '25.09.2026',
@@ -63,6 +65,8 @@ export const eventsData = [
     tagline: 'Craft intuitive interfaces, micro-interactions, and visual design masterpieces.',
     shortDesc: 'A fast-paced interactive design challenge where designers tackle a live real-world problem statement to architect high-fidelity Figma prototypes and design systems.',
     coverImage: uiUxImg,
+    objectFit: 'cover',
+    objectPosition: 'center',
     accentColor: '#8b5cf6',
     teamSize: '2 – 3 Members',
     date: '25.09.2026',
@@ -134,6 +138,8 @@ export const eventsData = [
     tagline: 'Crack cryptic ciphers, debug broken codebases, and conquer the algorithmic maze.',
     shortDesc: 'A multi-tier algorithmic code quest where programmers follow cyber breadcrumbs, fix obfuscated codebases, and crack logic puzzles to unearth the master key.',
     coverImage: logicHuntImg,
+    objectFit: 'cover',
+    objectPosition: 'center 36%',
     accentColor: '#3b82f6',
     teamSize: '2 – 3 Members',
     date: '25.09.2026',
@@ -192,6 +198,8 @@ export const eventsData = [
     tagline: 'Test your sharp instincts, deductive reasoning, and pop-culture tech mastery.',
     shortDesc: 'A captivating 20-questions mystery showdown where players unmask iconic tech legends, pop culture titans, sci-fi movies, and quirky personas against the clock.',
     coverImage: whoAmIImg,
+    objectFit: 'cover',
+    objectPosition: 'center',
     accentColor: '#ec4899',
     teamSize: '2 – 3 Members',
     date: '25.09.2026',
@@ -248,6 +256,8 @@ export const eventsData = [
     tagline: 'Lightning buzzers, instant wit, and split-second pop & tech trivia.',
     shortDesc: 'A buzzer-driven quiz arena packed with fast-paced questions, music riffs, tech logos, viral memes, and general knowledge where hesitations cost victory.',
     coverImage: rapidFireImg,
+    objectFit: 'cover',
+    objectPosition: 'center',
     accentColor: '#f59e0b',
     teamSize: '2 – 3 Members',
     date: '25.09.2026',
@@ -306,6 +316,8 @@ export const eventsData = [
     tagline: 'Drop in, survive, and conquer the battlefield.',
     shortDesc: 'Compete in the ultimate Free Fire battle royale and clash squad tournament. Prove your skills and claim the Booyah!',
     coverImage: freeFireImg,
+    objectFit: 'cover',
+    objectPosition: 'center 20%',
     accentColor: '#ef4444',
     teamSize: '2 – 3 Members',
     date: '25.09.2026',
