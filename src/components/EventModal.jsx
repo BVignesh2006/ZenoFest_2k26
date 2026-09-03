@@ -353,14 +353,6 @@ export default function EventModal({ event, onClose, onOpenRegister }) {
               )
             })()}
           </div>
-
-          {/* Modal Footer */}
-          <div className="modal-footer">
-            <div className="modal-footer-prize">
-              <span className="footer-prize-label">Total Prize Pool</span>
-              <span className="footer-prize-value">{event.prizePool}</span>
-            </div>
-          </div>
         </motion.div>
       </div>
     </AnimatePresence>

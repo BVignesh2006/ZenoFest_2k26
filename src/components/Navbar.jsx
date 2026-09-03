@@ -12,7 +12,7 @@ export default function Navbar() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 40)
 
-      const sections = ['home', 'about', 'events', 'timeline']
+      const sections = ['home', 'about', 'events', 'timeline', 'contact']
       const scrollPosition = window.scrollY + 250
 
       for (const sectionId of sections) {
@@ -95,6 +95,15 @@ export default function Navbar() {
               <span>Timeline</span>
               {activeSection === 'timeline' && <motion.div layoutId="nav-pill" className="nav-active-pill" />}
             </button>
+
+            <button
+              className={`nav-link-btn ${activeSection === 'contact' ? 'active' : ''}`}
+              onClick={() => scrollToSection('contact')}
+            >
+              <span className="nav-link-num">05</span>
+              <span>Contact</span>
+              {activeSection === 'contact' && <motion.div layoutId="nav-pill" className="nav-active-pill" />}
+            </button>
           </nav>
 
           {/* Right Action */}
@@ -162,6 +171,15 @@ export default function Navbar() {
               >
                 <span className="m-num">04</span>
                 <span>Fest Timeline & Schedule</span>
+                <ChevronRight size={16} />
+              </button>
+
+              <button
+                className={`mobile-nav-link ${activeSection === 'contact' ? 'active' : ''}`}
+                onClick={() => scrollToSection('contact')}
+              >
+                <span className="m-num">05</span>
+                <span>Contact Organizing Team</span>
                 <ChevronRight size={16} />
               </button>
 
