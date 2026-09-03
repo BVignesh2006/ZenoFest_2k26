@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import LoadingScreen from './components/LoadingScreen'
 import Navbar from './components/Navbar'
+import Home from './components/Home'
 import About from './components/About'
 import Timeline from './components/Timeline'
 import Events from './components/Events'
@@ -11,10 +12,15 @@ import './App.css'
 function App() {
   const [loading, setLoading] = useState(true)
 
+  const handleLoadingComplete = () => {
+    setLoading(false)
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
+  }
+
   useEffect(() => {
     const handleSpace = (e) => {
       if (e.code === 'Space' && loading) {
-        setLoading(false)
+        handleLoadingComplete()
       }
     }
     window.addEventListener('keydown', handleSpace)
@@ -25,9 +31,10 @@ function App() {
     <>
       <SceneCanvas />
       <CrackEffectOverlay />
-      {loading && <LoadingScreen onComplete={() => setLoading(false)} />}
+      {loading && <LoadingScreen onComplete={handleLoadingComplete} />}
       <div className="app">
         <Navbar />
+        <Home />
         <About />
         <Events />
         <Timeline />

@@ -6,13 +6,13 @@ import './Navbar.css'
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [activeSection, setActiveSection] = useState('about')
+  const [activeSection, setActiveSection] = useState('home')
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 40)
 
-      const sections = ['about', 'events', 'timeline']
+      const sections = ['home', 'about', 'events', 'timeline']
       const scrollPosition = window.scrollY + 250
 
       for (const sectionId of sections) {
@@ -45,7 +45,7 @@ export default function Navbar() {
       <header className={`navbar-header ${isScrolled ? 'scrolled' : ''}`}>
         <div className="navbar-container">
           {/* Brand Logo */}
-          <div className="nav-brand" onClick={() => scrollToSection('about')}>
+          <div className="nav-brand" onClick={() => scrollToSection('home')}>
             <div className="brand-hex-icon">
               <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
@@ -61,10 +61,19 @@ export default function Navbar() {
           {/* Desktop Links */}
           <nav className="nav-desktop-links">
             <button
+              className={`nav-link-btn ${activeSection === 'home' ? 'active' : ''}`}
+              onClick={() => scrollToSection('home')}
+            >
+              <span className="nav-link-num">01</span>
+              <span>Home</span>
+              {activeSection === 'home' && <motion.div layoutId="nav-pill" className="nav-active-pill" />}
+            </button>
+
+            <button
               className={`nav-link-btn ${activeSection === 'about' ? 'active' : ''}`}
               onClick={() => scrollToSection('about')}
             >
-              <span className="nav-link-num">01</span>
+              <span className="nav-link-num">02</span>
               <span>About</span>
               {activeSection === 'about' && <motion.div layoutId="nav-pill" className="nav-active-pill" />}
             </button>
@@ -73,7 +82,7 @@ export default function Navbar() {
               className={`nav-link-btn ${activeSection === 'events' ? 'active' : ''}`}
               onClick={() => scrollToSection('events')}
             >
-              <span className="nav-link-num">02</span>
+              <span className="nav-link-num">03</span>
               <span>Events</span>
               {activeSection === 'events' && <motion.div layoutId="nav-pill" className="nav-active-pill" />}
             </button>
@@ -82,7 +91,7 @@ export default function Navbar() {
               className={`nav-link-btn ${activeSection === 'timeline' ? 'active' : ''}`}
               onClick={() => scrollToSection('timeline')}
             >
-              <span className="nav-link-num">03</span>
+              <span className="nav-link-num">04</span>
               <span>Timeline</span>
               {activeSection === 'timeline' && <motion.div layoutId="nav-pill" className="nav-active-pill" />}
             </button>
@@ -121,10 +130,19 @@ export default function Navbar() {
           >
             <div className="mobile-nav-content">
               <button
+                className={`mobile-nav-link ${activeSection === 'home' ? 'active' : ''}`}
+                onClick={() => scrollToSection('home')}
+              >
+                <span className="m-num">01</span>
+                <span>Home Page</span>
+                <ChevronRight size={16} />
+              </button>
+
+              <button
                 className={`mobile-nav-link ${activeSection === 'about' ? 'active' : ''}`}
                 onClick={() => scrollToSection('about')}
               >
-                <span className="m-num">01</span>
+                <span className="m-num">02</span>
                 <span>About the Fest</span>
                 <ChevronRight size={16} />
               </button>
@@ -133,7 +151,7 @@ export default function Navbar() {
                 className={`mobile-nav-link ${activeSection === 'events' ? 'active' : ''}`}
                 onClick={() => scrollToSection('events')}
               >
-                <span className="m-num">02</span>
+                <span className="m-num">03</span>
                 <span>Events (Technical & Non-Technical)</span>
                 <ChevronRight size={16} />
               </button>
@@ -142,7 +160,7 @@ export default function Navbar() {
                 className={`mobile-nav-link ${activeSection === 'timeline' ? 'active' : ''}`}
                 onClick={() => scrollToSection('timeline')}
               >
-                <span className="m-num">03</span>
+                <span className="m-num">04</span>
                 <span>Fest Timeline & Schedule</span>
                 <ChevronRight size={16} />
               </button>
