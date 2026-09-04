@@ -97,7 +97,7 @@ export default function Contact() {
                 <div className="contact-person-row">
                   <span className="contact-person-name">
                     <User className="contact-person-icon" size={16} />
-                    <span>Ashwin Kumar, III/IT</span>
+                    <span>Ashwin Kumar P, III/IT</span>
                   </span>
                   <span className="contact-sep">|</span>
                   <a href="tel:+918940678167" className="contact-phone-link">
@@ -116,7 +116,7 @@ export default function Contact() {
                 <div className="contact-person-row">
                   <span className="contact-person-name">
                     <User className="contact-person-icon" size={16} />
-                    <span>Divya Dharshini E, III/IT</span>
+                    <span>Divyadharshini E, III/IT</span>
                   </span>
                 </div>
               </div>
