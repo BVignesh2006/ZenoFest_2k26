@@ -3,7 +3,7 @@ import uiUxImg from './ui ux .png'
 import logicHuntImg from './p1.jpeg'
 import whoAmIImg from './Who-Am-I-1.png'
 import rapidFireImg from './p2.jpeg'
-import freeFireImg from './WhatsApp Image 2026-09-03 at 3.09.48 PM.jpeg'
+import freeFireImg from './FF.png'
 
 export const eventsData = [
   // ── TECHNICAL EVENTS ──
@@ -399,7 +399,9 @@ export const eventsData = [
       { name: 'Ragavan K', role: 'Student Coordinator (III/IT)' },
       { name: 'Abilash Karthick G', role: 'Student Coordinator (III/IT)' },
       { name: 'Muthu Koodalingam V', role: 'Student Coordinator (III/IT)' },
-      { name: 'Thiru Kumaran M', role: 'Student Coordinator (III/IT)' }
+      { name: 'Thiru Kumaran M', role: 'Student Coordinator (III/IT)' },
+      { name: 'Gopi Krishnan M', role: 'Student Coordinator (III/IT)' },
+      { name: 'Aravinth P', role: 'Student Coordinator (III/IT)' }
     ]
   }
 ]
