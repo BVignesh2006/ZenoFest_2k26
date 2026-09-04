@@ -24,6 +24,49 @@ export default function Events() {
   const [hoveredId, setHoveredId] = useState(null)
   const [imgFails, setImgFails] = useState({})
 
+  const eventsTouchStartRef = useMemo(() => ({ current: { x: 0, y: 0 } }), [])
+  const eventsTouchCurrentRef = useMemo(() => ({ current: { x: 0, y: 0 } }), [])
+
+  const handleEventsTouchStart = (e) => {
+    if (e.touches && e.touches[0]) {
+      eventsTouchStartRef.current = { x: e.touches[0].clientX, y: e.touches[0].clientY }
+      eventsTouchCurrentRef.current = { x: e.touches[0].clientX, y: e.touches[0].clientY }
+    }
+  }
+
+  const handleEventsTouchMove = (e) => {
+    if (e.touches && e.touches[0]) {
+      eventsTouchCurrentRef.current = { x: e.touches[0].clientX, y: e.touches[0].clientY }
+    }
+  }
+
+  const handleEventsTouchEnd = () => {
+    const deltaX = eventsTouchCurrentRef.current.x - eventsTouchStartRef.current.x
+    const deltaY = eventsTouchCurrentRef.current.y - eventsTouchStartRef.current.y
+
+    const minSwipe = 35
+
+    if (Math.abs(deltaX) >= minSwipe && Math.abs(deltaX) > Math.abs(deltaY) * 1.1) {
+      const CATEGORIES = ['ALL', 'TECHNICAL', 'NON-TECHNICAL']
+      const currentIndex = CATEGORIES.indexOf(activeCategory)
+
+      if (deltaX < 0) {
+        // Swiped Left -> Move to Next Category Header
+        if (currentIndex < CATEGORIES.length - 1) {
+          setActiveCategory(CATEGORIES[currentIndex + 1])
+        }
+      } else {
+        // Swiped Right -> Move to Previous Category Header
+        if (currentIndex > 0) {
+          setActiveCategory(CATEGORIES[currentIndex - 1])
+        }
+      }
+    }
+
+    eventsTouchStartRef.current = { x: 0, y: 0 }
+    eventsTouchCurrentRef.current = { x: 0, y: 0 }
+  }
+
   const filteredEvents = useMemo(() => {
     return eventsData.filter((event) => {
       const matchesCategory =
@@ -119,8 +162,8 @@ export default function Events() {
             initial={{ opacity: 0, z: 0 }}
             animate={{
               opacity: isHovered ? 1 : 0,
-              z: isHovered ? 180 : 0,
-              y: isHovered ? -75 : 0,
+              z: isHovered ? 120 : 0,
+              y: 0,
               rotateX: isHovered ? -75 : 0
             }}
             transition={{ type: 'spring', stiffness: 120, damping: 18 }}
@@ -170,7 +213,12 @@ export default function Events() {
         <div className="events-dot-grid" />
       </div>
 
-      <div className="events-container">
+      <div
+        className="events-container"
+        onTouchStart={handleEventsTouchStart}
+        onTouchMove={handleEventsTouchMove}
+        onTouchEnd={handleEventsTouchEnd}
+      >
         {/* Section Header */}
         <motion.div
           className="events-header"

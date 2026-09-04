@@ -170,8 +170,9 @@ export default function QuantumSphere({ radius = 2.4, detail = 4 }) {
       wireframeMesh.rotation.x = time * 0.02
       coreMesh.rotation.y = -time * 0.06
 
-      scene.rotation.y += ((pointerX / window.innerWidth - 0.5) * 0.5 - scene.rotation.y) * 0.03
-      scene.rotation.x += (-(pointerY / window.innerHeight - 0.5) * 0.5 - scene.rotation.x) * 0.03
+      // Fixed background scene rotation (no cursor parallax shaking)
+      scene.rotation.y = 0
+      scene.rotation.x = 0
 
       // Mutate points using Sinusoidal Wave + 2-Second Trail Ripples
       const baseArr = basePositions.array

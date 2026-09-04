@@ -440,21 +440,21 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 36px 24px 24px;
+  padding: 14px 12px 12px;
   text-align: center;
   transform-style: preserve-3d;
   will-change: transform;
 }
 
 .ab-title-box {
-  min-height: 64px;
+  min-height: 42px;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
-  padding-top: 14px;
+  padding-top: 2px;
 }
-@media (min-width: 768px) { .ab-title-box { min-height: 85px; padding-top: 18px; } }
+@media (min-width: 768px) { .ab-title-box { min-height: 46px; padding-top: 4px; } }
 
 .ab-tile-title {
   font-family: 'Cinzel', 'Space Grotesk', serif;
@@ -462,9 +462,9 @@
   text-transform: uppercase;
   color: #dc2626;
   text-shadow: 0 0 15px rgba(220, 38, 38, 0.8);
-  line-height: 1;
-  font-size: clamp(20px, 2.6vw, 40px);
-  max-width: 92%;
+  line-height: 1.1;
+  font-size: clamp(15px, 1.7vw, 24px);
+  max-width: 95%;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
@@ -473,9 +473,9 @@
 
 .ab-divider {
   height: 2px;
-  width: 64px;
+  width: 40px;
   background: #ef4444;
-  margin: 14px auto;
+  margin: 6px auto;
   box-shadow: 0 0 10px #ef4444;
   flex-shrink: 0;
 }
@@ -483,10 +483,10 @@
 .ab-info {
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  margin-bottom: 18px;
+  gap: 3px;
+  margin-bottom: 10px;
   width: 100%;
-  font-size: clamp(11px, 1.3vw, 15px);
+  font-size: clamp(10px, 1.1vw, 13px);
 }
 
 .ab-info-row {
@@ -495,8 +495,8 @@
   font-family: 'Space Grotesk', sans-serif;
   color: rgba(156, 163, 175, 0.95);
   text-transform: uppercase;
-  letter-spacing: 0.12em;
-  line-height: 1.3;
+  letter-spacing: 0.08em;
+  line-height: 1.25;
 }
 .ab-info-row.ab-info-clamp {
   display: -webkit-box;
@@ -510,15 +510,15 @@
 
 /* ── KNOW MORE button ── */
 .ab-know-more {
-  padding: 12px 30px;
+  padding: 8px 20px;
   background: #dc2626;
   color: #fff;
   font-family: 'Space Grotesk', sans-serif;
   font-weight: 900;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  border-radius: 2px;
-  font-size: 13px;
+  border-radius: 4px;
+  font-size: 11px;
   cursor: pointer;
   border: 1px solid transparent;
   transition: color 0.3s ease, background-color 0.3s ease;
@@ -799,15 +799,40 @@
   .ab-know-more { padding: 10px 24px; font-size: 12px; }
   .ab-divider { width: 44px; margin: 10px auto; }
 
-  .filter-pills-bar { flex-direction: column; align-items: stretch; }
+  .filter-pills-bar { flex-direction: column; align-items: stretch; gap: 14px; }
+  .pills-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .pills-group .filter-pill:nth-child(1) {
+    grid-column: 1 / span 2;
+    justify-self: center;
+    width: auto;
+    min-width: 170px;
+    justify-content: center;
+  }
+
+  .pills-group .filter-pill:nth-child(2),
+  .pills-group .filter-pill:nth-child(3) {
+    width: 100%;
+    justify-content: center;
+    padding: 9px 10px;
+    font-size: 13px;
+    box-sizing: border-box;
+  }
+
   .events-search-wrap { max-width: 100%; }
 
-  .stats-strip { padding: 12px 16px; border-radius: 14px; }
-  .strip-item { padding: 0 12px; }
+  .stats-strip { padding: 12px 16px; border-radius: 14px; gap: 4px; }
+  .strip-item { padding: 0 8px; font-size: 12px; }
   .strip-sep { height: 20px; }
 
   .modal-hero { padding: 24px 20px 16px; }
   .modal-body-scroll { padding: 20px; }
+  .event-timings-summary-banner { grid-template-columns: repeat(2, 1fr); gap: 10px; padding: 12px; }
   .requirements-grid { grid-template-columns: 1fr; }
   .form-grid { grid-template-columns: 1fr; }
   .form-col-span-2 { grid-column: span 1; }
@@ -815,4 +840,11 @@
   .modal-footer-actions { justify-content: stretch; }
   .modal-footer-actions button { flex: 1; }
   .prize-podium-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+  .events-title { font-size: clamp(28px, 8vw, 36px); }
+  .event-timings-summary-banner { grid-template-columns: 1fr; }
+  .modal-tabs { gap: 4px; overflow-x: auto; padding-bottom: 4px; }
+  .tab-btn { padding: 8px 12px; font-size: 12px; }
 }

@@ -576,6 +576,10 @@
     gap: 20px;
   }
 
+  .track-container {
+    width: calc(7 * 260px - 20px);
+  }
+
   .card-column-space,
   .platform-card-column {
     width: 240px;

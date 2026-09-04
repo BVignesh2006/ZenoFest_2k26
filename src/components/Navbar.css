@@ -83,7 +83,7 @@
 }
 
 /* Desktop Nav Links */
-.desktop-nav {
+.nav-desktop-links {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -187,7 +187,9 @@
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 6px;
   color: #ffffff;
-  padding: 6px;
+  padding: 10px;
+  min-width: 44px;
+  min-height: 44px;
   cursor: pointer;
 }
 
@@ -215,6 +217,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 14px 16px;
+  min-height: 44px;
   background: rgba(15, 19, 42, 0.5);
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 8px;
@@ -248,13 +251,13 @@
 }
 
 /* Responsive */
-@media (max-width: 860px) {
-  .desktop-nav {
-    display: none;
+@media (max-width: 1024px) {
+  .nav-desktop-links {
+    display: none !important;
   }
 
   .nav-cta-btn {
-    display: none;
+    display: none !important;
   }
 
   .mobile-menu-toggle {

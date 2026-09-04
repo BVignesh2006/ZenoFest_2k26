@@ -4,7 +4,7 @@
 
 .contact-section {
   position: relative;
-  padding: 80px 20px 40px;
+  padding: 80px 20px 20px;
   background: #04060e;
   overflow: hidden;
 }
@@ -235,7 +235,7 @@
   align-items: center;
   justify-content: center;
   gap: 36px;
-  margin-bottom: 16px;
+  margin-bottom: 0px;
 }
 
 .dev-column {
@@ -275,5 +275,26 @@
   }
   .contact-map-wrap {
     min-height: 280px;
+  }
+}
+
+@media (max-width: 600px) {
+  .contact-section {
+    padding: 60px 16px 30px;
+  }
+  .footer-developers-grid {
+    flex-direction: column;
+    gap: 16px;
+  }
+  .dev-center-divider {
+    width: 80%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #06b6d4, transparent);
+  }
+  .dev-column {
+    text-align: center;
+  }
+  .contact-email-link {
+    word-break: break-all;
   }
 }

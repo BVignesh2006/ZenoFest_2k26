@@ -95,9 +95,10 @@ export default function Timeline() {
   const scrollWrapperRef = useRef(null)
   const viewportRef = useRef(null)
 
-  const COLUMN_WIDTH = 320 // 280px card + 40px gap
-  const NODE_OFFSET = 140   // Center of 280px card column
-  const TOTAL_STAGE_WIDTH = stationsData.length * COLUMN_WIDTH - 40 // 8 * 320 - 40 = 2520px
+  const isMobile = viewportWidth <= 768
+  const COLUMN_WIDTH = isMobile ? 260 : 320 // Mobile: 240px card + 20px gap; Desktop: 280px card + 40px gap
+  const NODE_OFFSET = isMobile ? 120 : 140   // Center of card column
+  const TOTAL_STAGE_WIDTH = stationsData.length * COLUMN_WIDTH - (isMobile ? 20 : 40)
 
   useEffect(() => {
     const updateWidth = () => {

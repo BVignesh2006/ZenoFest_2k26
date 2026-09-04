@@ -18,14 +18,47 @@ import {
 } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 
+const TABS = ['rules', 'rounds', 'overview', 'coordinators']
+
 export default function EventModal({ event, onClose, onOpenRegister }) {
   const [activeTab, setActiveTab] = useState('rules')
+  const [swipeDirection, setSwipeDirection] = useState('left')
   const backdropRef = useRef(null)
   const containerRef = useRef(null)
   const bodyScrollRef = useRef(null)
+  const navTabsRef = useRef(null)
+  const touchStartRef = useRef({ x: 0, y: 0 })
+  const touchCurrentRef = useRef({ x: 0, y: 0 })
+  const pointerStartRef = useRef({ x: 0, y: 0, isDown: false })
+
+  const handleTabChange = (newTab) => {
+    const currentIndex = TABS.indexOf(activeTab)
+    const newIndex = TABS.indexOf(newTab)
+    if (newIndex !== currentIndex) {
+      setSwipeDirection(newIndex > currentIndex ? 'left' : 'right')
+      setActiveTab(newTab)
+    }
+  }
+
+  const goNextTab = () => {
+    const currentIndex = TABS.indexOf(activeTab)
+    if (currentIndex < TABS.length - 1) {
+      setSwipeDirection('left')
+      setActiveTab(TABS[currentIndex + 1])
+    }
+  }
+
+  const goPrevTab = () => {
+    const currentIndex = TABS.indexOf(activeTab)
+    if (currentIndex > 0) {
+      setSwipeDirection('right')
+      setActiveTab(TABS[currentIndex - 1])
+    }
+  }
 
   useEffect(() => {
     setActiveTab('rules')
+    setSwipeDirection('left')
   }, [event?.id])
 
   useEffect(() => {
@@ -35,6 +68,15 @@ export default function EventModal({ event, onClose, onOpenRegister }) {
   }, [event?.id, activeTab])
 
   useEffect(() => {
+    if (navTabsRef.current) {
+      const activeBtn = navTabsRef.current.querySelector('.modal-tab-btn.active')
+      if (activeBtn) {
+        activeBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' })
+      }
+    }
+  }, [activeTab])
+
+  useEffect(() => {
     if (event) {
       document.body.style.overflow = 'hidden'
     }
@@ -42,6 +84,76 @@ export default function EventModal({ event, onClose, onOpenRegister }) {
       document.body.style.overflow = ''
     }
   }, [event])
+
+  const handlePanEnd = (e, info) => {
+    const offsetX = info.offset.x
+    const velocityX = info.velocity.x
+
+    if (offsetX < -25 || velocityX < -150) {
+      // Swiped Left -> Forward (Rules -> Rounds -> Overview -> Coordinators)
+      goNextTab()
+    } else if (offsetX > 25 || velocityX > 150) {
+      // Swiped Right -> Backward (Coordinators -> Overview -> Rounds -> Rules)
+      goPrevTab()
+    }
+  }
+
+  const handleTouchStart = (e) => {
+    if (e.touches && e.touches[0]) {
+      touchStartRef.current = { x: e.touches[0].clientX, y: e.touches[0].clientY }
+      touchCurrentRef.current = { x: e.touches[0].clientX, y: e.touches[0].clientY }
+    }
+  }
+
+  const handleTouchMove = (e) => {
+    if (e.touches && e.touches[0]) {
+      touchCurrentRef.current = { x: e.touches[0].clientX, y: e.touches[0].clientY }
+    }
+  }
+
+  const handleTouchEnd = () => {
+    const startX = touchStartRef.current.x
+    const startY = touchStartRef.current.y
+    const currentX = touchCurrentRef.current.x
+    const currentY = touchCurrentRef.current.y
+
+    if (startX === 0 && startY === 0) return
+
+    const deltaX = currentX - startX
+    const deltaY = currentY - startY
+
+    if (Math.abs(deltaX) >= 25 && Math.abs(deltaX) > Math.abs(deltaY) * 0.6) {
+      if (deltaX < 0) {
+        goNextTab()
+      } else if (deltaX > 0) {
+        goPrevTab()
+      }
+    }
+
+    touchStartRef.current = { x: 0, y: 0 }
+    touchCurrentRef.current = { x: 0, y: 0 }
+  }
+
+  const handlePointerDown = (e) => {
+    if (e.pointerType === 'mouse') {
+      pointerStartRef.current = { x: e.clientX, y: e.clientY, isDown: true }
+    }
+  }
+
+  const handlePointerUp = (e) => {
+    if (e.pointerType === 'mouse' && pointerStartRef.current.isDown) {
+      const deltaX = e.clientX - pointerStartRef.current.x
+      const deltaY = e.clientY - pointerStartRef.current.y
+      if (Math.abs(deltaX) >= 25 && Math.abs(deltaX) > Math.abs(deltaY) * 0.6) {
+        if (deltaX < 0) {
+          goNextTab()
+        } else if (deltaX > 0) {
+          goPrevTab()
+        }
+      }
+      pointerStartRef.current.isDown = false
+    }
+  }
 
   if (!event) return null
 
@@ -55,6 +167,13 @@ export default function EventModal({ event, onClose, onOpenRegister }) {
           className="event-modal-container"
           ref={containerRef}
           onClick={(e) => e.stopPropagation()}
+          onPanEnd={handlePanEnd}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+          onTouchCancel={handleTouchEnd}
+          onPointerDown={handlePointerDown}
+          onPointerUp={handlePointerUp}
           initial={{ opacity: 0, scale: 0.94 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.94 }}
@@ -100,31 +219,39 @@ export default function EventModal({ event, onClose, onOpenRegister }) {
           </div>
 
           {/* Navigation Tabs - High Contrast Icons & Labels */}
-          <div className="modal-nav-tabs">
+          <div
+            className="modal-nav-tabs"
+            ref={navTabsRef}
+            onPanEnd={handlePanEnd}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+            onTouchCancel={handleTouchEnd}
+          >
             <button
               className={`modal-tab-btn ${activeTab === 'rules' ? 'active' : ''}`}
-              onClick={() => setActiveTab('rules')}
+              onClick={() => handleTabChange('rules')}
             >
               <FileText size={16} className="tab-btn-icon" />
               <span>Rules & Instructions</span>
             </button>
             <button
               className={`modal-tab-btn ${activeTab === 'rounds' ? 'active' : ''}`}
-              onClick={() => setActiveTab('rounds')}
+              onClick={() => handleTabChange('rounds')}
             >
               <Layers size={16} className="tab-btn-icon" />
               <span>Rounds & Timings</span>
             </button>
             <button
               className={`modal-tab-btn ${activeTab === 'overview' ? 'active' : ''}`}
-              onClick={() => setActiveTab('overview')}
+              onClick={() => handleTabChange('overview')}
             >
               <Sparkles size={16} className="tab-btn-icon" />
               <span>Overview & Prizes</span>
             </button>
             <button
               className={`modal-tab-btn ${activeTab === 'coordinators' ? 'active' : ''}`}
-              onClick={() => setActiveTab('coordinators')}
+              onClick={() => handleTabChange('coordinators')}
             >
               <UserCheck size={16} className="tab-btn-icon" />
               <span>Coordinators</span>
@@ -132,7 +259,15 @@ export default function EventModal({ event, onClose, onOpenRegister }) {
           </div>
 
           {/* Modal Scrollable Body */}
-          <div className="modal-body-scroll" ref={bodyScrollRef}>
+          <div
+            className="modal-body-scroll"
+            ref={bodyScrollRef}
+            onPanEnd={handlePanEnd}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+            onTouchCancel={handleTouchEnd}
+          >
             {/* 4-Column Event Info Summary Banner (Timing, Date, Team, Venue) */}
             <div className="event-timings-summary-banner">
               <div className="timing-summary-item">

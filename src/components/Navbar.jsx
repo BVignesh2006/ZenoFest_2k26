@@ -145,7 +145,7 @@ export default function Navbar() {
                 className={`mobile-nav-link ${activeSection === 'home' ? 'active' : ''}`}
                 onClick={() => scrollToSection('home')}
               >
-                <span>Home Page</span>
+                <span>Home</span>
                 <ChevronRight size={16} />
               </button>
 
@@ -153,7 +153,7 @@ export default function Navbar() {
                 className={`mobile-nav-link ${activeSection === 'about' ? 'active' : ''}`}
                 onClick={() => scrollToSection('about')}
               >
-                <span>About the Fest</span>
+                <span>About</span>
                 <ChevronRight size={16} />
               </button>
 
@@ -161,7 +161,7 @@ export default function Navbar() {
                 className={`mobile-nav-link ${activeSection === 'events' ? 'active' : ''}`}
                 onClick={() => scrollToSection('events')}
               >
-                <span>Events (Technical & Non-Technical)</span>
+                <span>Events</span>
                 <ChevronRight size={16} />
               </button>
 
@@ -169,7 +169,7 @@ export default function Navbar() {
                 className={`mobile-nav-link ${activeSection === 'timeline' ? 'active' : ''}`}
                 onClick={() => scrollToSection('timeline')}
               >
-                <span>Fest Timeline & Schedule</span>
+                <span>Timeline</span>
                 <ChevronRight size={16} />
               </button>
 
@@ -177,7 +177,7 @@ export default function Navbar() {
                 className={`mobile-nav-link ${activeSection === 'faq' ? 'active' : ''}`}
                 onClick={() => scrollToSection('faq')}
               >
-                <span>Frequently Asked Questions (FAQ)</span>
+                <span>FAQ</span>
                 <ChevronRight size={16} />
               </button>
 
@@ -185,7 +185,7 @@ export default function Navbar() {
                 className={`mobile-nav-link ${activeSection === 'contact' ? 'active' : ''}`}
                 onClick={() => scrollToSection('contact')}
               >
-                <span>Contact Organizing Team</span>
+                <span>Contact</span>
                 <ChevronRight size={16} />
               </button>
 
@@ -194,7 +194,8 @@ export default function Navbar() {
                   className="btn-primary-glow mobile-cta"
                   onClick={() => scrollToSection('events')}
                 >
-                  Register for Events
+                  <Sparkles size={14} style={{ marginRight: '6px' }} />
+                  <span>Explore Events</span>
                 </button>
               </div>
             </div>

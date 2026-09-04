@@ -170,13 +170,8 @@ export default function Contact() {
               <span>Yukanthan P G, III/IT</span>
               <span>Ramakrishnan M, III/IT</span>
               <span>Ram Kumar J, III/IT</span>
-
             </div>
           </div>
-
-          <p className="footer-college-sub">
-            Zenofest 2K26 | PSR Engineering College
-          </p>
         </motion.div>
       </div>
     </section>

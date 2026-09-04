@@ -733,12 +733,47 @@
   }
 
   .home-actions-wrapper {
-    flex-direction: column;
-    width: 100%;
-  }
-
-  .btn-cyber-primary, .btn-cyber-secondary {
     width: 100%;
     justify-content: center;
+    margin: 10px 0;
+  }
+
+  .btn-cyber-primary {
+    width: auto;
+    max-width: 280px;
+    padding: 11px 22px;
+    font-size: 12px;
+    letter-spacing: 1px;
+    justify-content: center;
+    border-radius: 20px;
+    box-sizing: border-box;
+  }
+}
+
+@media (max-width: 480px) {
+  .zeno-cyber-title {
+    font-size: clamp(1.8rem, 9.5vw, 3.2rem);
+    letter-spacing: 2px;
+  }
+  .badge-year-text {
+    font-size: clamp(2rem, 7vw, 3.2rem);
+    letter-spacing: 6px;
+  }
+  .badge-line {
+    width: 60px;
+  }
+  .title-tech-tag {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    padding: 5px 12px;
+  }
+  .btn-cyber-primary {
+    max-width: 240px;
+    padding: 10px 18px;
+    font-size: 11px;
+    letter-spacing: 0.8px;
+  }
+  .home-lens-flare {
+    display: none;
   }
 }

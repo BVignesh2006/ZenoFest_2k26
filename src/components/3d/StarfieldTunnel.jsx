@@ -221,11 +221,9 @@ export default function StarfieldTunnel({ active = true, speedMultiplier = 0.4 }
 
       const totalSpeedMult = speedMultiplier * (1 + currentSpeedBoost * 0.05)
 
-      // Camera parallax
-      const camTargetX = (pointerX / window.innerWidth - 0.5) * 0.5
-      const camTargetY = -(pointerY / window.innerHeight - 0.5) * 0.5
-      camera.position.x += (camTargetX - camera.position.x) * 0.03
-      camera.position.y += (camTargetY - camera.position.y) * 0.03
+      // Fixed background camera position (no cursor parallax shaking)
+      camera.position.x = 0
+      camera.position.y = 0
       camera.rotation.z += 0.0003 * totalSpeedMult
 
       // Update 3D particle positions with 2-Second Fluid Trail Ripples
