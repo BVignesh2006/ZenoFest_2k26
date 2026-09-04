@@ -138,7 +138,7 @@
 /* Cards Row */
 .cards-row {
   display: grid;
-  grid-template-columns: repeat(8, 280px);
+  grid-template-columns: repeat(7, 280px);
   gap: 40px;
   width: max-content;
 }
@@ -335,7 +335,7 @@
 /* Central Track Container */
 .track-container {
   position: relative;
-  width: calc(8 * 320px - 40px);
+  width: calc(7 * 320px - 40px);
   height: 44px;
   display: flex;
   align-items: center;
@@ -572,7 +572,7 @@
 /* Responsive */
 @media (max-width: 768px) {
   .cards-row {
-    grid-template-columns: repeat(8, 240px);
+    grid-template-columns: repeat(7, 240px);
     gap: 20px;
   }
 
