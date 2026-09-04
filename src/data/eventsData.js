@@ -188,7 +188,6 @@ export const eventsData = [
       'Judges decision is final.'
     ],
     requirements: [
-      'Laptop with preferred IDE/compiler installed',
       'College Identity Card of all team members'
     ],
     coordinators: [
@@ -324,7 +323,7 @@ export const eventsData = [
       { name: 'Manoj M', role: 'Student Coordinator (III/IT)' },
       { name: 'Jagan Kumar V', role: 'Student Coordinator (III/IT)' },
       { name: 'Caroline M', role: 'Student Coordinator (III/IT)' },
-      { name: 'Sujitha M', role: 'Student Coordinator (III/IT)' },
+      { name: 'Sujitha A', role: 'Student Coordinator (III/IT)' },
       { name: 'Kanaga Yuvasri R', role: 'Student Coordinator (III/IT)' }
     ]
   },
