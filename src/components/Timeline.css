@@ -74,19 +74,29 @@
 .timeline-header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   width: 100%;
   margin-bottom: 4px;
+  text-align: center;
+}
+
+.timeline-title-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  text-align: center;
 }
 
 .timeline-main-title {
-  margin: 0;
+  margin: 0 auto;
   font-family: 'Space Grotesk', system-ui, sans-serif;
   font-size: clamp(32px, 4.5vw, 56px);
   font-weight: 900;
   letter-spacing: -0.03em;
   color: #ffffff;
   text-transform: uppercase;
+  text-align: center;
 }
 
 .menu-btn {

@@ -109,7 +109,7 @@ export default function Events() {
             )}
             <div className="ab-overlay" />
             {event.hasCashPrize && (
-              <span className="ab-cash-chip">₹10,000 Cash Prize</span>
+              <span className="ab-cash-chip">{event.cashPrizeBadge || '₹10,000 Cash Prize'}</span>
             )}
           </div>
 

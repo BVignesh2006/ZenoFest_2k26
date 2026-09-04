@@ -85,7 +85,7 @@ function FlipUnit({ value, label, variant = 'indigo' }) {
   )
 }
 
-export default function CountdownClock({ targetDate = DEFAULT_TARGET, showTelemetry = true }) {
+export default function CountdownClock({ targetDate = DEFAULT_TARGET, showTelemetry = false }) {
   const [timeLeft, setTimeLeft] = useState(() => calculateTimeLeft(targetDate))
 
   useEffect(() => {

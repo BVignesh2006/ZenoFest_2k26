@@ -84,11 +84,11 @@ export default function About() {
                 <circle cx="12" cy="12" r="3" fill="currentColor"/>
               </svg>
             </div>
-            <span className="date-text">25-26 SEP 2026 • SIVAKASI</span>
+            <span className="date-text">25 SEP 2026 • SIVAKASI</span>
           </div>
 
           {/* HackITon Style Countdown Clock */}
-          <CountdownClock />
+          <CountdownClock showTelemetry={false} />
         </motion.div>
       </div>
     </section>

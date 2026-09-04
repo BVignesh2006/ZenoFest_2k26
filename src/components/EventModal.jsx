@@ -249,26 +249,32 @@ export default function EventModal({ event, onClose, onOpenRegister }) {
                     <Trophy size={20} className="title-icon gold" />
                     <span>{event.hasCashPrize ? 'Cash Prize & Awards Distribution' : 'Awards & Merit Recognition'}</span>
                   </h3>
-                  <div className="prize-podium-grid">
+                  <div className={`prize-podium-grid ${(!event.secondPrize && !event.thirdPrize) ? 'single-winner' : ''}`}>
                     <div className="prize-card podium-first">
-                      <div className="prize-rank">1ST PLACE</div>
+                      <div className="prize-rank">{(!event.secondPrize && !event.thirdPrize) ? 'SOLE WINNER (1ST PLACE)' : '1ST PLACE'}</div>
                       <div className="prize-amount">{event.firstPrize}</div>
                       <div className="prize-perk">
-                        {event.hasCashPrize
+                        {event.firstPrizePerk
+                          ? event.firstPrizePerk
+                          : event.hasCashPrize
                           ? 'Winner Trophy + Certificate of Merit + Cash Prize'
                           : 'Winner Trophy + Certificate of Merit'}
                       </div>
                     </div>
-                    <div className="prize-card podium-second">
-                      <div className="prize-rank">2ND PLACE</div>
-                      <div className="prize-amount">{event.secondPrize}</div>
-                      <div className="prize-perk">Runner Trophy + Certificate of Merit</div>
-                    </div>
-                    <div className="prize-card podium-third">
-                      <div className="prize-rank">3RD PLACE</div>
-                      <div className="prize-amount">{event.thirdPrize}</div>
-                      <div className="prize-perk">Certificate of Appreciation</div>
-                    </div>
+                    {event.secondPrize && (
+                      <div className="prize-card podium-second">
+                        <div className="prize-rank">2ND PLACE</div>
+                        <div className="prize-amount">{event.secondPrize}</div>
+                        <div className="prize-perk">Runner Trophy + Certificate of Merit</div>
+                      </div>
+                    )}
+                    {event.thirdPrize && (
+                      <div className="prize-card podium-third">
+                        <div className="prize-rank">3RD PLACE</div>
+                        <div className="prize-amount">{event.thirdPrize}</div>
+                        <div className="prize-perk">Certificate of Appreciation</div>
+                      </div>
+                    )}
                   </div>
                   <div className="prize-note">
                     * All verified participants will receive an official National-Level Certificate from ZenoFest 2K26, PSR Institutions.

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
-import { Sparkles, Terminal, Activity, Zap, Cpu, Lock, ChevronDown, ArrowRight } from 'lucide-react'
+import { Sparkles, Terminal, ChevronDown, ArrowRight } from 'lucide-react'
 import './Home.css'
 
 const ZENO_LETTERS = ['Z', 'E', 'N', 'O', 'F', 'E', 'S', 'T']
@@ -161,22 +161,7 @@ export default function Home() {
           })
         }
 
-        // Spawn Lightning Bolts from 'O' out to HUD Widgets
-        if (frameCount % 18 === 0) {
-          const hudTargets = [
-            { x: canvas.width * 0.16, y: canvas.height * 0.16 }, // Top Left HUD
-            { x: canvas.width * 0.84, y: canvas.height * 0.16 }, // Top Right HUD
-            { x: canvas.width * 0.16, y: canvas.height * 0.84 }, // Bottom Left HUD
-            { x: canvas.width * 0.84, y: canvas.height * 0.84 }, // Bottom Right HUD
-          ]
-          const hudT = hudTargets[Math.floor(Math.random() * hudTargets.length)]
-          lightningArcs.push({
-            points: createLightning(oX, oY, hudT.x, hudT.y, 45),
-            life: 1,
-            maxLife: 14 + Math.floor(Math.random() * 8),
-            isWhite: false
-          })
-        }
+
 
         // Draw Energy Core Glow around 'O'
         ctx.beginPath()
@@ -309,63 +294,7 @@ export default function Home() {
       {/* Main Grid Layout */}
       <div className="home-container" style={{ transform: `perspective(1000px) rotateX(${mousePos.y * 0.12}deg) rotateY(${mousePos.x * 0.12}deg) translate(${mousePos.x * 0.3}px, ${mousePos.y * 0.3}px)` }}>
         
-        {/* HUD Widgets Top Row */}
-        <div className="home-hud-row top-hud">
-          {/* Top Left HUD */}
-          <motion.div 
-            className="hud-card hud-top-left"
-            initial={{ opacity: 0, x: -40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            <div className="hud-corner tl" />
-            <div className="hud-corner tr" />
-            <div className="hud-corner bl" />
-            <div className="hud-corner br" />
-            
-            <div className="hud-header">
-              <Activity size={13} className="hud-icon glow-cyan" />
-              <span className="hud-label">CORE STABILITY</span>
-            </div>
-            <div className="hud-value-group">
-              <span className="hud-value">100%</span>
-              <span className="hud-badge">OPTIMAL</span>
-            </div>
-            <div className="hud-bar-bg">
-              <div className="hud-bar-fill fill-100" />
-            </div>
-            <div className="hud-footer-text">DEPT OF IT • PSR</div>
-          </motion.div>
 
-          {/* Top Right HUD */}
-          <motion.div 
-            className="hud-card hud-top-right"
-            initial={{ opacity: 0, x: 40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-          >
-            <div className="hud-corner tl" />
-            <div className="hud-corner tr" />
-            <div className="hud-corner bl" />
-            <div className="hud-corner br" />
-
-            <div className="hud-header">
-              <Cpu size={13} className="hud-icon glow-blue" />
-              <span className="hud-label">SYSTEM PROCESS</span>
-            </div>
-            <div className="hud-value-group">
-              <span className="hud-value">LOAD: 100%</span>
-              <span className="hud-badge ready">SYSTEM READY</span>
-            </div>
-            <div className="hud-indicator-grid">
-              <span className="dot active" />
-              <span className="dot active" />
-              <span className="dot active" />
-              <span className="dot active" />
-              <span className="dot active" />
-            </div>
-          </motion.div>
-        </div>
 
         {/* CENTER STAGE: ZENOFEST GIANT TITLE WITH 'O' ENERGY CORE */}
         <motion.div 
@@ -427,76 +356,7 @@ export default function Home() {
           </div>
         </motion.div>
 
-        {/* HUD Widgets Middle & Bottom Row (Matching Picture1.png) */}
-        <div className="home-hud-row bottom-hud">
-          {/* Bottom Left HUD */}
-          <motion.div 
-            className="hud-card hud-bottom-left"
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-          >
-            <div className="hud-corner tl" />
-            <div className="hud-corner tr" />
-            <div className="hud-corner bl" />
-            <div className="hud-corner br" />
 
-            <div className="hud-header">
-              <Zap size={13} className="hud-icon glow-cyan" />
-              <span className="hud-label">INNOVATION FLOW</span>
-            </div>
-            <div className="hud-status-live">
-              <span className="live-pulse" />
-              <span className="hud-status-text">ACTIVE</span>
-            </div>
-            <p className="hud-sub-desc">IDEAS . BUILD . IMPACT.</p>
-          </motion.div>
-
-          {/* Middle Right HUD */}
-          <motion.div 
-            className="hud-card hud-mid-right"
-            initial={{ opacity: 0, x: 40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.55 }}
-          >
-            <div className="hud-corner tl" />
-            <div className="hud-corner tr" />
-            <div className="hud-corner bl" />
-            <div className="hud-corner br" />
-
-            <div className="hud-header">
-              <Sparkles size={13} className="hud-icon glow-cyan" />
-              <span className="hud-label">POWER LEVEL</span>
-            </div>
-            <div className="hud-value-group">
-              <span className="hud-value">100%</span>
-              <span className="hud-badge">OPTIMAL</span>
-            </div>
-            <div className="hud-footer-text">HIGH VOLTAGE READY</div>
-          </motion.div>
-
-          {/* Bottom Right HUD */}
-          <motion.div 
-            className="hud-card hud-bottom-right"
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-          >
-            <div className="hud-corner tl" />
-            <div className="hud-corner tr" />
-            <div className="hud-corner bl" />
-            <div className="hud-corner br" />
-
-            <div className="hud-header">
-              <Lock size={13} className="hud-icon glow-blue" />
-              <span className="hud-label">FUTURE STATUS</span>
-            </div>
-            <div className="hud-status-live unlocked">
-              <span className="hud-status-text">UNLOCKED</span>
-            </div>
-            <p className="hud-sub-desc">LIMITS . BROKEN.</p>
-          </motion.div>
-        </div>
 
         {/* CTA Actions */}
         <motion.div 
