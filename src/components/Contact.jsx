@@ -154,7 +154,7 @@ export default function Contact() {
           viewport={{ once: true }}
         >
           <h3 className="footer-designed-by-title">Design and Developed by</h3>
-          
+
           <div className="footer-developers-grid">
             <div className="dev-column">
               <span>Bhuvaneshwari A, III/IT</span>
@@ -167,9 +167,10 @@ export default function Contact() {
 
             <div className="dev-column">
               <span>Vignesh B, III/IT</span>
+              <span>Yukanthan P G, III/IT</span>
               <span>Ramakrishnan M, III/IT</span>
               <span>Ram Kumar J, III/IT</span>
-              <span>Yukanthan P G, III/IT</span>
+
             </div>
           </div>
 
