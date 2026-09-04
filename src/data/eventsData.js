@@ -52,13 +52,15 @@ export const eventsData = [
       'Proper documentation related to the project'
     ],
     coordinators: [
+      { name: 'Dr. R. Ramani', role: 'Staff Coordinator (HOD/IT)' },
       { name: 'Dr. P. Edwin Dhas', role: 'Staff Coordinator (AP/IT)' },
       { name: 'Ramakrishnan M', role: 'Student Coordinator (III/IT)' },
       { name: 'Yukanthan P G', role: 'Student Coordinator (III/IT)' },
       { name: 'Guhan S', role: 'Student Coordinator (III/IT)' },
       { name: 'Sumithra S', role: 'Student Coordinator (III/IT)' },
       { name: 'Narmatha Baby B', role: 'Student Coordinator (III/IT)' },
-      { name: 'Rishiga R', role: 'Student Coordinator (III/IT)' }
+      { name: 'Rishiga R', role: 'Student Coordinator (III/IT)' },
+      { name: 'Revathi P', role: 'Student Coordinator (III/IT)' }
     ]
   },
   {
@@ -255,6 +257,7 @@ export const eventsData = [
     ],
     coordinators: [
       { name: 'Mr. S. Shunmuga Sundaram', role: 'Staff Coordinator (AP/IT)' },
+      { name: 'Ms. Packiya Lakshmi', role: 'Staff Coordinator (AP/IT)' },
       { name: 'Manivasaga Perumal P', role: 'Student Coordinator (III/IT)' },
       { name: 'Jeya Prakash S', role: 'Student Coordinator (III/IT)' },
       { name: 'Priya Dharshini C', role: 'Student Coordinator (III/IT)' },
@@ -392,6 +395,7 @@ export const eventsData = [
     ],
     coordinators: [
       { name: 'Mr. T. Saravanan', role: 'Staff Coordinator (AP/IT)' },
+      { name: 'Dr. P. Selvakumar', role: 'Staff Coordinator (AP/IT)' },
       { name: 'Ragavan K', role: 'Student Coordinator (III/IT)' },
       { name: 'Abilash Karthick G', role: 'Student Coordinator (III/IT)' },
       { name: 'Muthu Koodalingam V', role: 'Student Coordinator (III/IT)' },

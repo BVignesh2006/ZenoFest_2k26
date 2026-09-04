@@ -365,21 +365,17 @@ export default function Home() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.65 }}
         >
-          <button 
+          <a 
+            href="https://forms.gle/vo2t7PCV5QAFyT8e6"
+            target="_blank"
+            rel="noopener noreferrer"
             className="btn-cyber-primary"
-            onClick={() => scrollToSection('events')}
+            style={{ textDecoration: 'none' }}
           >
             <Sparkles size={16} />
-            <span>EXPLORE FEST</span>
+            <span>CLICK TO REGISTER</span>
             <ArrowRight size={16} className="btn-arrow" />
-          </button>
-
-          <button 
-            className="btn-cyber-secondary"
-            onClick={() => scrollToSection('about')}
-          >
-            <span>ABOUT EVENT</span>
-          </button>
+          </a>
         </motion.div>
 
         {/* Scroll Prompt Leading to About Section */}

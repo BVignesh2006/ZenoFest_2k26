@@ -31,12 +31,51 @@ export default function Contact() {
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
           >
-            {/* Email Row */}
-            <div className="contact-email-row">
-              <Mail className="contact-email-icon" size={20} />
-              <a href="mailto:itassociation@psr.edu.in" className="contact-email-link">
-                itassociation@psr.edu.in
-              </a>
+            {/* Email & Instagram Row Header */}
+            <div className="contact-social-links" style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+              <div className="contact-email-row">
+                <Mail className="contact-email-icon" size={20} />
+                <a href="mailto:itassociation@psr.edu.in" className="contact-email-link">
+                  itassociation@psr.edu.in
+                </a>
+              </div>
+
+              <div className="contact-email-row">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="contact-email-icon" style={{ color: '#e1306c' }}>
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+                <a
+                  href="https://www.instagram.com/zenofest_2k26?igsi=MW5rdDdmd3FpNTZicw=="
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="contact-email-link"
+                  style={{ color: '#f472b6' }}
+                >
+                  @zenofest_2k26
+                </a>
+              </div>
+            </div>
+
+            {/* Faculty Coordinators */}
+            <div className="contact-group">
+              <h4 className="contact-group-heading">Faculty Coordinators :</h4>
+              <div className="contact-info-list">
+                <div className="contact-person-row">
+                  <span className="contact-person-name">
+                    <User className="contact-person-icon" size={16} />
+                    <span>Mr. S. Shunmuga Sundaram, AP/IT</span>
+                  </span>
+                </div>
+
+                <div className="contact-person-row">
+                  <span className="contact-person-name">
+                    <User className="contact-person-icon" size={16} />
+                    <span>Ms. M. Anitha, AP/IT</span>
+                  </span>
+                </div>
+              </div>
             </div>
 
             {/* Student Coordinators */}
@@ -66,24 +105,18 @@ export default function Contact() {
                     <span>+91 8940678167</span>
                   </a>
                 </div>
-              </div>
-            </div>
 
-            {/* Faculty Coordinators */}
-            <div className="contact-group">
-              <h4 className="contact-group-heading">Faculty Coordinators :</h4>
-              <div className="contact-info-list">
                 <div className="contact-person-row">
                   <span className="contact-person-name">
                     <User className="contact-person-icon" size={16} />
-                    <span>Mr.S.Shunmuga Sundaram, AP/IT</span>
+                    <span>Dharshini V, III/IT</span>
                   </span>
                 </div>
 
                 <div className="contact-person-row">
                   <span className="contact-person-name">
                     <User className="contact-person-icon" size={16} />
-                    <span>Ms.M.Anitha, AP/IT</span>
+                    <span>Divya Dharshini E, III/IT</span>
                   </span>
                 </div>
               </div>
@@ -127,16 +160,16 @@ export default function Contact() {
               <span>Bhuvaneshwari A, III/IT</span>
               <span>Veni Vaishnavi M, III/IT</span>
               <span>Logeshwari P, III/IT</span>
-              <span>Manisha P, III/IT</span>
+              <span>Saranya S, III/IT</span>
             </div>
 
             <div className="dev-center-divider" />
 
             <div className="dev-column">
               <span>Vignesh B, III/IT</span>
-              <span>Yukanthan P G, III/IT</span>
               <span>Ramakrishnan M, III/IT</span>
               <span>Ram Kumar J, III/IT</span>
+              <span>Yukanthan P G, III/IT</span>
             </div>
           </div>
 
