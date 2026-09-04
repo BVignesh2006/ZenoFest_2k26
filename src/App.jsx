@@ -6,6 +6,7 @@ import About from './components/About'
 import Timeline from './components/Timeline'
 import Events from './components/Events'
 import Contact from './components/Contact'
+import Faq from './components/Faq'
 import SceneCanvas from './components/3d/SceneCanvas'
 import CrackEffectOverlay from './components/fx/CrackEffectOverlay'
 import './App.css'
@@ -39,6 +40,7 @@ function App() {
         <About />
         <Events />
         <Timeline />
+        <Faq />
         <Contact />
       </div>
     </>
