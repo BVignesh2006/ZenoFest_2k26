@@ -180,8 +180,6 @@ export default function Events() {
           viewport={{ once: true }}
         >
           <div className="section-label">
-            <span className="label-number">02</span>
-            <span className="label-divider">/</span>
             <span className="label-text">CHALLENGE ARENAS</span>
           </div>
 

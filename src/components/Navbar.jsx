@@ -64,7 +64,6 @@ export default function Navbar() {
               className={`nav-link-btn ${activeSection === 'home' ? 'active' : ''}`}
               onClick={() => scrollToSection('home')}
             >
-              <span className="nav-link-num">01</span>
               <span>Home</span>
               {activeSection === 'home' && <motion.div layoutId="nav-pill" className="nav-active-pill" />}
             </button>
@@ -73,7 +72,6 @@ export default function Navbar() {
               className={`nav-link-btn ${activeSection === 'about' ? 'active' : ''}`}
               onClick={() => scrollToSection('about')}
             >
-              <span className="nav-link-num">02</span>
               <span>About</span>
               {activeSection === 'about' && <motion.div layoutId="nav-pill" className="nav-active-pill" />}
             </button>
@@ -82,7 +80,6 @@ export default function Navbar() {
               className={`nav-link-btn ${activeSection === 'events' ? 'active' : ''}`}
               onClick={() => scrollToSection('events')}
             >
-              <span className="nav-link-num">03</span>
               <span>Events</span>
               {activeSection === 'events' && <motion.div layoutId="nav-pill" className="nav-active-pill" />}
             </button>
@@ -91,7 +88,6 @@ export default function Navbar() {
               className={`nav-link-btn ${activeSection === 'timeline' ? 'active' : ''}`}
               onClick={() => scrollToSection('timeline')}
             >
-              <span className="nav-link-num">04</span>
               <span>Timeline</span>
               {activeSection === 'timeline' && <motion.div layoutId="nav-pill" className="nav-active-pill" />}
             </button>
@@ -100,7 +96,6 @@ export default function Navbar() {
               className={`nav-link-btn ${activeSection === 'faq' ? 'active' : ''}`}
               onClick={() => scrollToSection('faq')}
             >
-              <span className="nav-link-num">05</span>
               <span>FAQ</span>
               {activeSection === 'faq' && <motion.div layoutId="nav-pill" className="nav-active-pill" />}
             </button>
@@ -109,7 +104,6 @@ export default function Navbar() {
               className={`nav-link-btn ${activeSection === 'contact' ? 'active' : ''}`}
               onClick={() => scrollToSection('contact')}
             >
-              <span className="nav-link-num">06</span>
               <span>Contact</span>
               {activeSection === 'contact' && <motion.div layoutId="nav-pill" className="nav-active-pill" />}
             </button>
@@ -151,7 +145,6 @@ export default function Navbar() {
                 className={`mobile-nav-link ${activeSection === 'home' ? 'active' : ''}`}
                 onClick={() => scrollToSection('home')}
               >
-                <span className="m-num">01</span>
                 <span>Home Page</span>
                 <ChevronRight size={16} />
               </button>
@@ -160,7 +153,6 @@ export default function Navbar() {
                 className={`mobile-nav-link ${activeSection === 'about' ? 'active' : ''}`}
                 onClick={() => scrollToSection('about')}
               >
-                <span className="m-num">02</span>
                 <span>About the Fest</span>
                 <ChevronRight size={16} />
               </button>
@@ -169,7 +161,6 @@ export default function Navbar() {
                 className={`mobile-nav-link ${activeSection === 'events' ? 'active' : ''}`}
                 onClick={() => scrollToSection('events')}
               >
-                <span className="m-num">03</span>
                 <span>Events (Technical & Non-Technical)</span>
                 <ChevronRight size={16} />
               </button>
@@ -178,7 +169,6 @@ export default function Navbar() {
                 className={`mobile-nav-link ${activeSection === 'timeline' ? 'active' : ''}`}
                 onClick={() => scrollToSection('timeline')}
               >
-                <span className="m-num">04</span>
                 <span>Fest Timeline & Schedule</span>
                 <ChevronRight size={16} />
               </button>
@@ -187,7 +177,6 @@ export default function Navbar() {
                 className={`mobile-nav-link ${activeSection === 'faq' ? 'active' : ''}`}
                 onClick={() => scrollToSection('faq')}
               >
-                <span className="m-num">05</span>
                 <span>Frequently Asked Questions (FAQ)</span>
                 <ChevronRight size={16} />
               </button>
@@ -196,7 +185,6 @@ export default function Navbar() {
                 className={`mobile-nav-link ${activeSection === 'contact' ? 'active' : ''}`}
                 onClick={() => scrollToSection('contact')}
               >
-                <span className="m-num">06</span>
                 <span>Contact Organizing Team</span>
                 <ChevronRight size={16} />
               </button>

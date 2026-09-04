@@ -115,7 +115,6 @@ export default function Faq() {
                     aria-expanded={isOpen}
                   >
                     <div className="faq-q-left">
-                      <span className="faq-num-tag">Q{faq.numLabel}</span>
                       <h3 className="faq-question-text">{faq.question}</h3>
                     </div>
                     <div className={`faq-chevron-box ${isOpen ? 'rotated' : ''}`}>

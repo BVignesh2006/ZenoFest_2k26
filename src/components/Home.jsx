@@ -8,7 +8,6 @@ const ZENO_LETTERS = ['Z', 'E', 'N', 'O', 'F', 'E', 'S', 'T']
 export default function Home() {
   const canvasRef = useRef(null)
   const letterRefs = useRef([])
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -220,13 +219,6 @@ export default function Home() {
     }
   }, [])
 
-  const handleMouseMove = (e) => {
-    const { clientX, clientY } = e
-    const moveX = (clientX - window.innerWidth / 2) / 30
-    const moveY = (clientY - window.innerHeight / 2) / 30
-    setMousePos({ x: moveX, y: moveY })
-  }
-
   const scrollToSection = (id) => {
     const el = document.getElementById(id)
     if (el) {
@@ -235,7 +227,7 @@ export default function Home() {
   }
 
   return (
-    <section className="home-hero-section" id="home" onMouseMove={handleMouseMove}>
+    <section className="home-hero-section" id="home">
       {/* Background Lightning Canvas */}
       <canvas ref={canvasRef} className="home-canvas" />
 
@@ -292,7 +284,7 @@ export default function Home() {
       </svg>
 
       {/* Main Grid Layout */}
-      <div className="home-container" style={{ transform: `perspective(1000px) rotateX(${mousePos.y * 0.12}deg) rotateY(${mousePos.x * 0.12}deg) translate(${mousePos.x * 0.3}px, ${mousePos.y * 0.3}px)` }}>
+      <div className="home-container">
         
 
 

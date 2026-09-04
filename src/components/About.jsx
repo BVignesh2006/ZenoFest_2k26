@@ -23,8 +23,6 @@ export default function About() {
           viewport={{ once: true }}
         >
           <div className="section-label">
-            <span className="label-number">01</span>
-            <span className="label-divider">/</span>
             <span className="label-text">ABOUT THE EVENT</span>
           </div>
 
