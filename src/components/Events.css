@@ -7,11 +7,11 @@
 .events-section {
   position: relative;
   min-height: 100vh;
-  background:
+  background-color: rgba(3, 2, 4, 0.45);
+  background-image:
     radial-gradient(circle at 20% 20%, rgba(255, 44, 54, 0.14), transparent 45%),
     radial-gradient(circle at 80% 30%, rgba(118, 0, 224, 0.1), transparent 40%),
-    radial-gradient(circle at 50% 80%, rgba(255, 44, 54, 0.1), transparent 35%),
-    rgba(3, 2, 4, 0.45);
+    radial-gradient(circle at 50% 80%, rgba(255, 44, 54, 0.1), transparent 35%);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   color: #fff;
@@ -845,6 +845,6 @@
 @media (max-width: 480px) {
   .events-title { font-size: clamp(28px, 8vw, 36px); }
   .event-timings-summary-banner { grid-template-columns: 1fr; }
-  .modal-tabs { gap: 4px; overflow-x: auto; padding-bottom: 4px; }
-  .tab-btn { padding: 8px 12px; font-size: 12px; }
+  .modal-nav-tabs { gap: 4px; overflow-x: auto; padding-bottom: 4px; }
+  .modal-tab-btn { padding: 8px 12px; font-size: 12px; }
 }
