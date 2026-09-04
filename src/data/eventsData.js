@@ -260,7 +260,7 @@ export const eventsData = [
       { name: 'Ms. Packiya Lakshmi', role: 'Staff Coordinator (AP/IT)' },
       { name: 'Manivasaga Perumal P', role: 'Student Coordinator (III/IT)' },
       { name: 'Jeya Prakash S', role: 'Student Coordinator (III/IT)' },
-      { name: 'Priya Dharshini C', role: 'Student Coordinator (III/IT)' },
+      { name: 'Priyadharshini C', role: 'Student Coordinator (III/IT)' },
       { name: 'Harsika Sri M', role: 'Student Coordinator (III/IT)' }
     ]
   },
