@@ -44,7 +44,7 @@ function FlipUnit({ value, label, variant = 'indigo' }) {
         {/* Top half */}
         <div className="card-half top-half">
           <div className="half-inner">
-            <AnimatePresence mode="popLayout" initial={false}>
+            <AnimatePresence initial={false}>
               <motion.span
                 key={formatted}
                 initial={{ y: '-25%', opacity: 0.2 }}
@@ -62,7 +62,7 @@ function FlipUnit({ value, label, variant = 'indigo' }) {
         {/* Bottom half */}
         <div className="card-half bottom-half">
           <div className="half-inner">
-            <AnimatePresence mode="popLayout" initial={false}>
+            <AnimatePresence initial={false}>
               <motion.span
                 key={formatted}
                 initial={{ y: '-25%', opacity: 0.2 }}

@@ -132,22 +132,30 @@ export default function Home() {
       const oElem = letterRefs.current[3] // Letter 'O' is index 3 in Z-E-N-O-F-E-S-T
 
       if (oElem) {
-        const oRect = oElem.getBoundingClientRect()
-        const oX = oRect.left + oRect.width / 2 - canvasRect.left
-        const oY = oRect.top + oRect.height / 2 - canvasRect.top
+        // Calculate positions periodically or on frame check to prevent layout thrashing
+        let cachedLetterData = window._zenoLetterCache
+        if (!cachedLetterData || frameCount % 30 === 0) {
+          const oRect = oElem.getBoundingClientRect()
+          const oX = oRect.left + oRect.width / 2 - canvasRect.left
+          const oY = oRect.top + oRect.height / 2 - canvasRect.top
 
-        // Find positions of all other letters
-        const targetLetters = letterRefs.current
-          .map((el, idx) => {
-            if (!el || idx === 3) return null
-            const r = el.getBoundingClientRect()
-            return {
-              idx,
-              x: r.left + r.width / 2 - canvasRect.left,
-              y: r.top + r.height / 2 - canvasRect.top
-            }
-          })
-          .filter(Boolean)
+          const targets = letterRefs.current
+            .map((el, idx) => {
+              if (!el || idx === 3) return null
+              const r = el.getBoundingClientRect()
+              return {
+                idx,
+                x: r.left + r.width / 2 - canvasRect.left,
+                y: r.top + r.height / 2 - canvasRect.top
+              }
+            })
+            .filter(Boolean)
+
+          cachedLetterData = { oX, oY, targets }
+          window._zenoLetterCache = cachedLetterData
+        }
+
+        const { oX, oY, targets: targetLetters } = cachedLetterData
 
         // Spawn Lightning Bolts from 'O' to other letters
         if (targetLetters.length > 0 && (frameCount % 4 === 0 || Math.random() < 0.4)) {

@@ -309,12 +309,11 @@ export default function Gallery() {
             </div>
 
             <div className="gallery-grid">
-              <AnimatePresence mode="popLayout">
+              <AnimatePresence>
                 {filteredItems.map((item, i) => (
                   <motion.div
                     key={item.id}
                     className="gallery-card"
-                    layout
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.9 }}

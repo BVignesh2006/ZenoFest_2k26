@@ -4,9 +4,10 @@ import './LoadingScreen.css'
 
 const TOTAL_BARS = 15
 const PHASE_TIMING = {
-  impact: 800,
-  zoom: 2200,
-  done: 3000,
+  impact: 1000,
+  zoom: 3000,
+  exit: 4200,
+  done: 4800,
 }
 
 function getBarColor(index) {
@@ -20,10 +21,20 @@ const BOTTOM_BAR_HEIGHTS = [40, 70, 30, 90, 60, 100, 50, 80, 30, 65]
 export default function LoadingScreen({ onComplete }) {
   const [visible, setVisible] = useState(true)
   const [phase, setPhase] = useState('initial')
+  const [isMobile, setIsMobile] = useState(false)
 
   const stableOnComplete = useCallback(() => {
     onComplete?.()
   }, [onComplete])
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 640)
+    }
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
 
   useEffect(() => {
     const t1 = setTimeout(() => setPhase('impact'), PHASE_TIMING.impact)
@@ -31,6 +42,8 @@ export default function LoadingScreen({ onComplete }) {
     const t3 = setTimeout(() => {
       setPhase('done')
       setVisible(false)
+    }, PHASE_TIMING.exit)
+    const t4 = setTimeout(() => {
       stableOnComplete()
     }, PHASE_TIMING.done)
 
@@ -38,11 +51,18 @@ export default function LoadingScreen({ onComplete }) {
       clearTimeout(t1)
       clearTimeout(t2)
       clearTimeout(t3)
+      clearTimeout(t4)
     }
   }, [stableOnComplete])
 
   const isImpact = phase === 'impact' || phase === 'zoom'
   const isZoom = phase === 'zoom'
+
+  // Tap/click to skip intro
+  const handleSkip = () => {
+    setVisible(false)
+    stableOnComplete()
+  }
 
   return (
     <AnimatePresence>
@@ -50,8 +70,9 @@ export default function LoadingScreen({ onComplete }) {
         <motion.div
           key="loader"
           initial={{ opacity: 1 }}
-          exit={{ opacity: 0, transition: { duration: 0.6, ease: 'easeOut' } }}
+          exit={{ opacity: 0, transition: { duration: 0.6, ease: 'easeInOut' } }}
           className="loading-screen-wrapper"
+          onClick={handleSkip}
         >
           {/* Background gradient orb */}
           <div className="orb-container">
@@ -59,10 +80,10 @@ export default function LoadingScreen({ onComplete }) {
               initial={{ scale: 0.5, opacity: 0.3 }}
               animate={
                 isImpact
-                  ? { scale: [1, 2.5, 4], opacity: [0.3, 0.9, 0] }
+                  ? { scale: isMobile ? [1, 1.8, 2.5] : [1, 2.5, 4], opacity: [0.3, 0.9, 0] }
                   : { scale: 1, opacity: 0.4 }
               }
-              transition={{ duration: 1.5, ease: 'easeInOut' }}
+              transition={{ duration: 2.0, ease: 'easeInOut' }}
               className="gradient-orb"
             />
           </div>
@@ -79,8 +100,8 @@ export default function LoadingScreen({ onComplete }) {
                     : {}
                 }
                 transition={{
-                  duration: 1.2,
-                  delay: 0.8 + Math.abs(i - 7) * 0.04,
+                  duration: 1.6,
+                  delay: 0.4 + Math.abs(i - 7) * 0.05,
                   ease: [0.16, 1, 0.3, 1],
                 }}
                 className={`equalizer-bar ${getBarColor(i)}`}
@@ -93,7 +114,7 @@ export default function LoadingScreen({ onComplete }) {
             <motion.div
               initial={{ scaleX: 0, opacity: 0 }}
               animate={{ scaleX: [0, 1.5, 3], opacity: [0, 1, 0] }}
-              transition={{ duration: 0.8, ease: 'easeOut' }}
+              transition={{ duration: 1.2, ease: 'easeOut' }}
               className="sweep-line"
             />
           )}
@@ -101,18 +122,18 @@ export default function LoadingScreen({ onComplete }) {
           {/* Title area */}
           <div className="title-area">
             <motion.div
-              initial={{ scale: 0.7, opacity: 0, y: 20 }}
+              initial={{ scale: 0.8, opacity: 0, y: 15 }}
               animate={
                 isZoom
-                  ? { scale: [1, 1.2, 8], opacity: [1, 1, 0], y: 0 }
+                  ? { scale: isMobile ? [1, 1.1, 3.5] : [1, 1.2, 6], opacity: [1, 1, 0], y: 0 }
                   : isImpact
-                    ? { scale: [0.9, 1.1, 1], opacity: 1, y: 0 }
+                    ? { scale: [0.95, 1.05, 1], opacity: 1, y: 0 }
                     : { scale: 0.9, opacity: 0.8, y: 0 }
               }
               transition={
                 isZoom
-                  ? { duration: 0.8, ease: [0.7, 0, 0.84, 0] }
-                  : { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
+                  ? { duration: 1.2, ease: [0.65, 0, 0.35, 1] }
+                  : { duration: 1.0, ease: [0.16, 1, 0.3, 1] }
               }
               className="title-wrapper"
             >
@@ -121,10 +142,10 @@ export default function LoadingScreen({ onComplete }) {
                 <motion.span
                   animate={
                     isImpact
-                      ? { filter: ['blur(0px)', 'blur(8px)', 'blur(0px)'] }
+                      ? { filter: ['blur(0px)', 'blur(4px)', 'blur(0px)'] }
                       : {}
                   }
-                  transition={{ duration: 0.6 }}
+                  transition={{ duration: 0.8 }}
                   className="main-title"
                 >
                   ZENOFEST
@@ -136,10 +157,10 @@ export default function LoadingScreen({ onComplete }) {
               <motion.h1
                 animate={
                   isImpact
-                    ? { letterSpacing: ['0.1em', '0.25em', '0.2em'], opacity: 1 }
+                    ? { letterSpacing: isMobile ? ['0.05em', '0.12em', '0.1em'] : ['0.1em', '0.25em', '0.2em'], opacity: 1 }
                     : { opacity: 0.9 }
                 }
-                transition={{ duration: 0.8 }}
+                transition={{ duration: 1.0 }}
                 className="subtitle-text"
               >
                 NATIONAL LEVEL PROJECT EXPO{' '}
@@ -150,7 +171,7 @@ export default function LoadingScreen({ onComplete }) {
               <motion.p
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 0.5 }}
+                transition={{ delay: 0.6, duration: 0.8 }}
                 className="tagline-text"
               >
                 INNOVATE · INSPIRE · ELEVATE
@@ -171,7 +192,7 @@ export default function LoadingScreen({ onComplete }) {
                       : { height: '20%' }
                   }
                   transition={{
-                    duration: 0.4,
+                    duration: 0.5,
                     repeat: Infinity,
                     repeatType: 'reverse',
                     delay: i * 0.05,
@@ -186,3 +207,4 @@ export default function LoadingScreen({ onComplete }) {
     </AnimatePresence>
   )
 }
+

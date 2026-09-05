@@ -106,7 +106,6 @@ export default function Events() {
     return (
       <motion.div
         key={event.id}
-        layout
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.92 }}
@@ -127,9 +126,9 @@ export default function Events() {
 
         <motion.div
           className="ab-stack"
-          style={{ transformStyle: 'preserve-3d' }}
+          style={{ transformStyle: 'preserve-3d', willChange: 'transform' }}
           animate={{ rotateX: 75 * !!isHovered }}
-          transition={{ type: 'spring', stiffness: 100, damping: 15 }}
+          transition={{ type: 'spring', stiffness: 120, damping: 25 }}
         >
           {/* Card Frame */}
           <div className={`ab-frame ${isHovered ? 'hovered' : ''}`}>
@@ -166,8 +165,8 @@ export default function Events() {
               y: 0,
               rotateX: isHovered ? -75 : 0
             }}
-            transition={{ type: 'spring', stiffness: 120, damping: 18 }}
-            style={{ transformStyle: 'preserve-3d', pointerEvents: isHovered ? 'auto' : 'none' }}
+            transition={{ type: 'spring', stiffness: 120, damping: 25 }}
+            style={{ transformStyle: 'preserve-3d', pointerEvents: isHovered ? 'auto' : 'none', willChange: 'transform' }}
           >
             <div className="ab-title-box">
               <h4 className="ab-tile-title">{event.title}</h4>
@@ -324,11 +323,11 @@ export default function Events() {
               <span className="cat-count-badge cyan-badge">{techEvents.length} Competitions</span>
             </div>
 
-            <motion.div layout className="flip-grid">
-              <AnimatePresence mode="popLayout">
+            <div className="flip-grid">
+              <AnimatePresence>
                 {techEvents.map((event, idx) => renderEventCard(event, idx))}
               </AnimatePresence>
-            </motion.div>
+            </div>
           </div>
         )}
 
@@ -343,11 +342,11 @@ export default function Events() {
               <span className="cat-count-badge pink-badge">{nonTechEvents.length} Competitions</span>
             </div>
 
-            <motion.div layout className="flip-grid">
-              <AnimatePresence mode="popLayout">
+            <div className="flip-grid">
+              <AnimatePresence>
                 {nonTechEvents.map((event, idx) => renderEventCard(event, idx))}
               </AnimatePresence>
-            </motion.div>
+            </div>
           </div>
         )}
 

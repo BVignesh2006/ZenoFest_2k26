@@ -100,57 +100,7 @@ export default function QuantumSphere({ radius = 2.4, detail = 4 }) {
     const coreMesh = new THREE.Mesh(coreGeo, coreMat)
     scene.add(coreMesh)
 
-    // 3. 2-Second Persistent Fluid Trail System (Mouse & Mobile Touch)
-    const MAX_TRAIL_NODES = 35
-    const TRAIL_MAX_AGE = 2.0 // Exactly 2.0 seconds decay duration
-    let trailNodes = []
-    let lastAddX = -9999
-    let lastAddY = -9999
-
-    let pointerX = window.innerWidth / 2
-    let pointerY = window.innerHeight / 2
-
-    const addTrailNode = (clientX, clientY) => {
-      pointerX = clientX
-      pointerY = clientY
-
-      const worldX = (clientX / window.innerWidth - 0.5) * 6.0
-      const worldY = -(clientY / window.innerHeight - 0.5) * 4.0
-
-      const distFromLast = Math.sqrt((worldX - lastAddX) ** 2 + (worldY - lastAddY) ** 2)
-
-      if (distFromLast > 0.15) {
-        const now = clock.getElapsedTime()
-        trailNodes.push({
-          x: worldX,
-          y: worldY,
-          birthTime: now
-        })
-
-        if (trailNodes.length > MAX_TRAIL_NODES) {
-          trailNodes.shift()
-        }
-
-        lastAddX = worldX
-        lastAddY = worldY
-      }
-    }
-
-    const handlePointerMove = (e) => {
-      addTrailNode(e.clientX, e.clientY)
-    }
-
-    const handleTouchMove = (e) => {
-      if (e.touches && e.touches[0]) {
-        addTrailNode(e.touches[0].clientX, e.touches[0].clientY)
-      }
-    }
-
-    window.addEventListener('pointermove', handlePointerMove, { passive: true })
-    window.addEventListener('touchmove', handleTouchMove, { passive: true })
-    window.addEventListener('touchstart', handleTouchMove, { passive: true })
-
-    // 4. Ultra-Smooth Wave + Trail Animation Loop
+    // 3. Ultra-Smooth Wave Animation Loop (Rock-solid background, no cursor shaking)
     let animationFrameId
     const clock = new THREE.Clock()
 
@@ -159,9 +109,6 @@ export default function QuantumSphere({ radius = 2.4, detail = 4 }) {
 
       const time = clock.getElapsedTime()
       const amplitude = 0.18
-
-      // Prune trail nodes older than 2.0 seconds
-      trailNodes = trailNodes.filter((node) => time - node.birthTime <= TRAIL_MAX_AGE)
 
       // Slow smooth rotation
       pointsMesh.rotation.y = time * 0.04
@@ -174,12 +121,10 @@ export default function QuantumSphere({ radius = 2.4, detail = 4 }) {
       scene.rotation.y = 0
       scene.rotation.x = 0
 
-      // Mutate points using Sinusoidal Wave + 2-Second Trail Ripples
+      // Mutate points using Sinusoidal Wave
       const baseArr = basePositions.array
       const pointPosArr = pointsGeometry.attributes.position.array
       const pointColArr = pointsGeometry.attributes.color.array
-
-      const activeRadius = 3.0
 
       for (let i = 0; i < vertexCount; i++) {
         const x = baseArr[i * 3]
@@ -194,23 +139,7 @@ export default function QuantumSphere({ radius = 2.4, detail = 4 }) {
         // Base Wave Displacement
         const baseDisplacement = Math.sin(x * 1.8 + time * 0.7) * Math.cos(y * 1.8 + time * 0.7) * amplitude
 
-        // Accumulate liquid bulge from active 2-second trail nodes
-        let totalTrailBulge = 0
-
-        for (let j = 0; j < trailNodes.length; j++) {
-          const node = trailNodes[j]
-          const age = time - node.birthTime // 0.0 to 2.0s
-          const fade = 1.0 - (age / TRAIL_MAX_AGE) // 1.0 down to 0.0
-
-          const dist = Math.sqrt((x - node.x) ** 2 + (y - node.y) ** 2)
-
-          if (dist < activeRadius) {
-            const force = Math.exp(-(dist * dist) / 1.8) * fade * 0.35
-            totalTrailBulge += Math.sin(dist * 3.5 - age * 4.0) * force
-          }
-        }
-
-        const rNew = len + baseDisplacement + totalTrailBulge
+        const rNew = len + baseDisplacement
 
         pointPosArr[i * 3] = nx * rNew
         pointPosArr[i * 3 + 1] = ny * rNew
@@ -248,22 +177,7 @@ export default function QuantumSphere({ radius = 2.4, detail = 4 }) {
         const nz = origZ / len
 
         const baseDisplacement = Math.sin(origX * 1.8 + time * 0.7) * Math.cos(origY * 1.8 + time * 0.7) * amplitude
-
-        let totalTrailBulge = 0
-        for (let j = 0; j < trailNodes.length; j++) {
-          const node = trailNodes[j]
-          const age = time - node.birthTime
-          const fade = 1.0 - (age / TRAIL_MAX_AGE)
-
-          const dist = Math.sqrt((origX - node.x) ** 2 + (origY - node.y) ** 2)
-
-          if (dist < activeRadius) {
-            const force = Math.exp(-(dist * dist) / 1.8) * fade * 0.35
-            totalTrailBulge += Math.sin(dist * 3.5 - age * 4.0) * force
-          }
-        }
-
-        const rNew = len + baseDisplacement + totalTrailBulge
+        const rNew = len + baseDisplacement
 
         wirePosArr[i * 3] = nx * rNew
         wirePosArr[i * 3 + 1] = ny * rNew
@@ -297,9 +211,6 @@ export default function QuantumSphere({ radius = 2.4, detail = 4 }) {
 
     return () => {
       cancelAnimationFrame(animationFrameId)
-      window.removeEventListener('pointermove', handlePointerMove)
-      window.removeEventListener('touchmove', handleTouchMove)
-      window.removeEventListener('touchstart', handleTouchMove)
       window.removeEventListener('resize', handleResize)
 
       baseGeo.dispose()

@@ -138,58 +138,10 @@ export default function StarfieldTunnel({ active = true, speedMultiplier = 0.4 }
     const dustPoints = new THREE.Points(dustGeometry, dustMaterial)
     scene.add(dustPoints)
 
-    // 3. 2-Second Persistent Fluid Trail System (Mouse & Mobile Touch)
-    const MAX_TRAIL_NODES = 35
-    const TRAIL_MAX_AGE = 2.0 // Exactly 2.0 seconds decay duration
-    let trailNodes = []
-    let lastAddX = -9999
-    let lastAddY = -9999
-
+    // 3. Steady Ambient Motion Control (No cursor shaking displacement)
     let targetSpeedBoost = 0
     let currentSpeedBoost = 0
     let lastScrollY = window.scrollY
-    let pointerX = window.innerWidth / 2
-    let pointerY = window.innerHeight / 2
-
-    const addTrailNode = (clientX, clientY) => {
-      pointerX = clientX
-      pointerY = clientY
-
-      // Map client screen coordinates to world space units
-      const worldX = (clientX / window.innerWidth - 0.5) * 14.0
-      const worldY = -(clientY / window.innerHeight - 0.5) * 9.0
-
-      const distFromLast = Math.sqrt((worldX - lastAddX) ** 2 + (worldY - lastAddY) ** 2)
-
-      // Add new trail node if moved at least 0.2 units
-      if (distFromLast > 0.2) {
-        const now = clock.getElapsedTime()
-        trailNodes.push({
-          x: worldX,
-          y: worldY,
-          birthTime: now,
-          vx: (worldX - lastAddX) * 0.3,
-          vy: (worldY - lastAddY) * 0.3
-        })
-
-        if (trailNodes.length > MAX_TRAIL_NODES) {
-          trailNodes.shift()
-        }
-
-        lastAddX = worldX
-        lastAddY = worldY
-      }
-    }
-
-    const handlePointerMove = (e) => {
-      addTrailNode(e.clientX, e.clientY)
-    }
-
-    const handleTouchMove = (e) => {
-      if (e.touches && e.touches[0]) {
-        addTrailNode(e.touches[0].clientX, e.touches[0].clientY)
-      }
-    }
 
     const handleScroll = () => {
       const deltaY = Math.abs(window.scrollY - lastScrollY)
@@ -197,12 +149,9 @@ export default function StarfieldTunnel({ active = true, speedMultiplier = 0.4 }
       lastScrollY = window.scrollY
     }
 
-    window.addEventListener('pointermove', handlePointerMove, { passive: true })
-    window.addEventListener('touchmove', handleTouchMove, { passive: true })
-    window.addEventListener('touchstart', handleTouchMove, { passive: true })
     window.addEventListener('scroll', handleScroll, { passive: true })
 
-    // 4. Ultra-Smooth Fluid Trail Animation Loop
+    // 4. Ultra-Smooth Fluid Animation Loop
     let animationFrameId
     const clock = new THREE.Clock()
 
@@ -210,10 +159,6 @@ export default function StarfieldTunnel({ active = true, speedMultiplier = 0.4 }
       animationFrameId = requestAnimationFrame(animate)
 
       const delta = Math.min(clock.getDelta(), 0.05)
-      const currentTime = clock.getElapsedTime()
-
-      // Prune trail nodes older than 2.0 seconds
-      trailNodes = trailNodes.filter((node) => currentTime - node.birthTime <= TRAIL_MAX_AGE)
 
       // Decay scroll speed boost
       currentSpeedBoost += (targetSpeedBoost - currentSpeedBoost) * 0.05
@@ -221,20 +166,19 @@ export default function StarfieldTunnel({ active = true, speedMultiplier = 0.4 }
 
       const totalSpeedMult = speedMultiplier * (1 + currentSpeedBoost * 0.05)
 
-      // Fixed background camera position (no cursor parallax shaking)
+      // Fixed background camera position (rock solid, no cursor shaking)
       camera.position.x = 0
       camera.position.y = 0
       camera.rotation.z += 0.0003 * totalSpeedMult
 
-      // Update 3D particle positions with 2-Second Fluid Trail Ripples
+      // Update 3D particle positions cleanly
       const posAttr = geometry.attributes.position
       const posArray = posAttr.array
-      const activeRadius = 3.5
 
       for (let i = 0; i < PARTICLE_COUNT; i++) {
         const p = particleData[i]
 
-        // Advance Z forward
+        // Advance Z forward smoothly
         const moveStep = (p.baseSpeed * totalSpeedMult) * delta * 2.0
         p.z += moveStep
 
@@ -246,31 +190,8 @@ export default function StarfieldTunnel({ active = true, speedMultiplier = 0.4 }
           p.baseY = p.radius * Math.sin(p.theta)
         }
 
-        // Accumulate liquid forces from all active trail nodes within 2 seconds
-        let totalDx = 0
-        let totalDy = 0
-
-        for (let j = 0; j < trailNodes.length; j++) {
-          const node = trailNodes[j]
-          const age = currentTime - node.birthTime // 0.0 to 2.0s
-          const fade = 1.0 - (age / TRAIL_MAX_AGE)  // 1.0 down to 0.0
-
-          const dx = p.baseX - node.x
-          const dy = p.baseY - node.y
-          const dist = Math.sqrt(dx * dx + dy * dy)
-
-          if (dist < activeRadius) {
-            // Mild fluid wave force
-            const force = Math.exp(-(dist * dist) / (2 * 1.8 * 1.8)) * fade * 0.45
-            const wave = Math.sin(dist * 3.0 - age * 4.5)
-
-            totalDx += (dx / (dist || 1)) * force * wave + node.vx * force * 0.3
-            totalDy += (dy / (dist || 1)) * force * wave + node.vy * force * 0.3
-          }
-        }
-
-        p.x = p.baseX + totalDx
-        p.y = p.baseY + totalDy
+        p.x = p.baseX
+        p.y = p.baseY
 
         const warpStreak = p.streakLength * (1 + currentSpeedBoost * 0.08)
 
@@ -280,8 +201,8 @@ export default function StarfieldTunnel({ active = true, speedMultiplier = 0.4 }
         posArray[i * 6 + 2] = p.z
 
         // Tail
-        posArray[i * 6 + 3] = p.x - totalDx * 0.35
-        posArray[i * 6 + 4] = p.y - totalDy * 0.35
+        posArray[i * 6 + 3] = p.x
+        posArray[i * 6 + 4] = p.y
         posArray[i * 6 + 5] = p.z - warpStreak
       }
 
@@ -317,9 +238,6 @@ export default function StarfieldTunnel({ active = true, speedMultiplier = 0.4 }
 
     return () => {
       cancelAnimationFrame(animationFrameId)
-      window.removeEventListener('pointermove', handlePointerMove)
-      window.removeEventListener('touchmove', handleTouchMove)
-      window.removeEventListener('touchstart', handleTouchMove)
       window.removeEventListener('scroll', handleScroll)
       window.removeEventListener('resize', handleResize)
 

@@ -2,6 +2,9 @@
 .loading-screen-wrapper {
   position: fixed;
   inset: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
   z-index: 10000;
   background: #070913;
   display: flex;
@@ -10,6 +13,7 @@
   justify-content: center;
   overflow: hidden;
   user-select: none;
+  touch-action: none;
 }
 
 /* ── Background gradient orb ── */
@@ -191,6 +195,23 @@
 
 /* ── Responsive ── */
 @media (max-width: 640px) {
+  .title-area {
+    padding: 0 12px;
+  }
+  .main-title {
+    font-size: clamp(34px, 10vw, 54px);
+    letter-spacing: -0.02em;
+    filter: drop-shadow(0 0 20px rgba(239, 68, 68, 0.7));
+  }
+  .subtitle-text {
+    font-size: clamp(11px, 3.2vw, 16px);
+    letter-spacing: 0.12em;
+  }
+  .tagline-text {
+    font-size: clamp(8px, 2.2vw, 11px);
+    letter-spacing: 0.2em;
+    margin-top: 8px;
+  }
   .equalizer-container {
     gap: 2px;
   }
@@ -198,8 +219,9 @@
     width: 2px;
   }
   .gradient-orb {
-    width: 280px;
-    height: 280px;
+    width: 260px;
+    height: 260px;
+    filter: blur(80px);
   }
   .bottom-bars {
     bottom: 24px;
