@@ -1,47 +1,40 @@
-import { useState, useEffect } from 'react'
-import LoadingScreen from './components/LoadingScreen'
-import Navbar from './components/Navbar'
-import Home from './components/Home'
-import About from './components/About'
-import Timeline from './components/Timeline'
-import Events from './components/Events'
-import Contact from './components/Contact'
-import SceneCanvas from './components/3d/SceneCanvas'
-import CrackEffectOverlay from './components/fx/CrackEffectOverlay'
+import { useEffect } from 'react'
 import './App.css'
 
 function App() {
-  const [loading, setLoading] = useState(true)
-
-  const handleLoadingComplete = () => {
-    setLoading(false)
-    window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
-  }
-
   useEffect(() => {
-    const handleSpace = (e) => {
-      if (e.code === 'Space' && loading) {
-        handleLoadingComplete()
-      }
-    }
-    window.addEventListener('keydown', handleSpace)
-    return () => window.removeEventListener('keydown', handleSpace)
-  }, [loading])
+    window.location.replace('https://zenofest.vercel.app')
+  }, [])
 
   return (
-    <>
-      <SceneCanvas />
-      <CrackEffectOverlay />
-      {loading && <LoadingScreen onComplete={handleLoadingComplete} />}
-      <div className="app">
-        <Navbar />
-        <Home />
-        <About />
-        <Events />
-        <Timeline />
-        <Contact />
-      </div>
-    </>
+    <div style={{
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+      minHeight: '100vh',
+      fontFamily: 'system-ui, -apple-system, sans-serif',
+      backgroundColor: '#09090b',
+      color: '#f4f4f5',
+      textAlign: 'center',
+      padding: '2rem'
+    }}>
+      <h1 style={{ fontSize: '2rem', marginBottom: '1rem', fontWeight: '700' }}>Redirecting...</h1>
+      <p style={{ color: '#a1a1aa', marginBottom: '1.5rem' }}>
+        This version of ZenoFest is deprecated. Moving you to the official site.
+      </p>
+      <a 
+        href="https://zenofest.vercel.app" 
+        style={{
+          color: '#38bdf8',
+          textDecoration: 'underline',
+          fontSize: '1.1rem',
+          fontWeight: '500'
+        }}
+      >
+        Click here if you are not redirected automatically
+      </a>
+    </div>
   )
 }
 

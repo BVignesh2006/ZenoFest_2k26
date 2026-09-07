@@ -1,5 +1,12 @@
 {
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
-  "framework": "vite"
+  "framework": "vite",
+  "redirects": [
+    {
+      "source": "/:path*",
+      "destination": "https://zenofest.vercel.app/:path*",
+      "permanent": true
+    }
+  ]
 }

@@ -1,9 +1,10 @@
-.app {
-  min-height: 100vh;
-  background: transparent;
-  color: #fff;
-  font-family: 'Space Grotesk', 'Segoe UI', system-ui, -apple-system, sans-serif;
-  position: relative;
-  z-index: 1;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
+body {
+  background-color: #09090b;
+  color: #ffffff;
+}
